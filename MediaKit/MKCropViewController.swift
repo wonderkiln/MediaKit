@@ -30,6 +30,13 @@ public class MKCropViewController: UIViewController, MKImageExportController {
     public var originalImage: UIImage? {
         didSet {
             imageView.image = originalImage
+            view.layoutIfNeeded()
+        }
+    }
+    
+    public var initialZoom: CGFloat = 1.4 {
+        didSet {
+            view.layoutIfNeeded()
         }
     }
     
@@ -75,7 +82,7 @@ public class MKCropViewController: UIViewController, MKImageExportController {
     fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
         let widthScale = size.width / imageView.bounds.width
         let heightScale = size.height / imageView.bounds.height
-        let minScale = min(widthScale, heightScale) / 1.2
+        let minScale = min(widthScale, heightScale) / initialZoom
         
         scrollView.minimumZoomScale = minScale
         scrollView.zoomScale = minScale

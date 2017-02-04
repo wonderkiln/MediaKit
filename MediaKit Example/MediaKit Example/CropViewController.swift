@@ -19,7 +19,5 @@ class CropViewController: UIViewController {
         view.addSubview(cropViewController.view)
         self.addChildViewController(cropViewController)
         cropViewController.didMove(toParentViewController: self)
-        
-        cropViewController.bottomPaddingLayoutConstraint.constant = 100
     }
 }

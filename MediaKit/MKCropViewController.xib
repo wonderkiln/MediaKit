@@ -11,14 +11,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MKCropViewController" customModule="MediaKit" customModuleProvider="target">
             <connections>
                 <outlet property="bottomLayoutConstraint" destination="Gq4-gq-tTY" id="ALN-dh-AXQ"/>
-                <outlet property="bottomPaddingLayoutConstraint" destination="z2i-Cr-qbI" id="taJ-e7-SUV"/>
                 <outlet property="gridView" destination="rW7-bp-msD" id="NfL-Pe-H4n"/>
                 <outlet property="imageView" destination="WJu-oV-sUP" id="YEO-OC-wrJ"/>
                 <outlet property="leadingLayoutConstraint" destination="EGh-XP-7Or" id="dFb-1b-lzg"/>
                 <outlet property="maskView" destination="QaE-uN-rrK" id="7w4-b2-GUg"/>
                 <outlet property="scrollView" destination="ED9-tJ-n9Y" id="jFd-lu-A2L"/>
                 <outlet property="topLayoutConstraint" destination="OMq-4C-lIi" id="Bnd-r0-Tit"/>
-                <outlet property="topPaddingLayoutConstraint" destination="gVm-4F-vfk" id="5AX-99-D6l"/>
                 <outlet property="trailingLayoutConstraint" destination="nt7-8G-9VI" id="9ES-Z0-Tii"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

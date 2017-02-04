@@ -42,7 +42,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Crop" id="VPC-jv-8Oc"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bl5-Qk-o8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -82,14 +82,14 @@
                             <tableViewSection headerTitle="Image" id="o3W-lR-UgZ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Swf-Rb-LTQ" style="IBUITableViewCellStyleDefault" id="9go-LP-scd">
-                                        <rect key="frame" x="0.0" y="55.5" width="320" height="50"/>
+                                        <rect key="frame" x="0.0" y="56" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9go-LP-scd" id="H7J-Kf-dTj">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Filters Example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Swf-Rb-LTQ">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="49.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="49"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -103,14 +103,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="n09-lj-0ph" style="IBUITableViewCellStyleDefault" id="Mc8-j2-CMb">
-                                        <rect key="frame" x="0.0" y="105.5" width="320" height="50"/>
+                                        <rect key="frame" x="0.0" y="106" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mc8-j2-CMb" id="Uuu-eL-VwW">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Crop Example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n09-lj-0ph">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="49.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="49"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -128,14 +128,14 @@
                             <tableViewSection headerTitle="Video" id="aNT-oW-dqk">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="gzE-oj-1tI" style="IBUITableViewCellStyleDefault" id="Gvs-Gt-MCL">
-                                        <rect key="frame" x="0.0" y="211.5" width="320" height="50"/>
+                                        <rect key="frame" x="0.0" y="213" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gvs-Gt-MCL" id="Ujp-Ey-O8F">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Trim Example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gzE-oj-1tI">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="49.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="49"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
