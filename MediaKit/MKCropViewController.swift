@@ -50,10 +50,13 @@ public class MKCropViewController: UIViewController, MKImageExportController {
         }
     }
     
+    public init() {
+        super.init(nibName: "MKCropViewController", bundle: Bundle(for: MKCropViewController.self))
+    }
+    
     public init(image: UIImage) {
         self.originalImage = image
-        super.init(nibName: "MKCropViewController",
-                   bundle: Bundle(for: MKCropViewController.self))
+        super.init(nibName: "MKCropViewController", bundle: Bundle(for: MKCropViewController.self))
     }
     
     required public init?(coder aDecoder: NSCoder) {

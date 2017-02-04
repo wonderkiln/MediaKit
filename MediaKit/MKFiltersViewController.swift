@@ -86,10 +86,13 @@ public class MKFiltersViewController: UIViewController, MKImageExportController 
     
     fileprivate var scaledImage: UIImage?
     
+    public init() {
+        super.init(nibName: "MKFiltersViewController", bundle: Bundle(for: MKFiltersViewController.self))
+    }
+    
     public init(image: UIImage) {
         self.originalImage = image
-        super.init(nibName: "MKFiltersViewController",
-                   bundle: Bundle(for: MKFiltersViewController.self))
+        super.init(nibName: "MKFiltersViewController", bundle: Bundle(for: MKFiltersViewController.self))
     }
     
     required public init?(coder aDecoder: NSCoder) {

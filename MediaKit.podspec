@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name     = "MediaKit"
-  spec.version  = "0.0.2"
+  spec.version  = "0.0.3"
   spec.summary  = "MediaKit"
   spec.homepage = "https://github.com/wonderkiln/MediaKit"
   spec.license  = { :type => "MIT License", :file => "LICENSE" }
