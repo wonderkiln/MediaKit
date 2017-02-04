@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name     = "MediaKit"
-  spec.version  = "0.0.3"
+  spec.version  = "0.0.4"
   spec.summary  = "MediaKit"
   spec.homepage = "https://github.com/wonderkiln/MediaKit"
   spec.license  = { :type => "MIT License", :file => "LICENSE" }
@@ -10,7 +10,7 @@ Pod::Spec.new do |spec|
 
   spec.source       = { :git => "https://github.com/wonderkiln/MediaKit", :tag => "#{spec.version}" }
   spec.source_files = "MediaKit/*.swift"
-  spec.resources    = "MediaKit/*.{xib,storyboard}"
+  spec.resources    = "MediaKit/*.{xib,storyboard,xcassets}"
 
   spec.dependency "MARKRangeSlider", "~> 1.1"
 end

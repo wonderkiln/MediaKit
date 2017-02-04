@@ -1,5 +1,5 @@
 //
-//  MKEffect.swift
+//  MKProtocol.swift
 //  MediaKit
 //
 //  Created by Adrian Mateoaea on 05/01/2017.

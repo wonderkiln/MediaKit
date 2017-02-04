@@ -2,147 +2,228 @@
 //  MKCropViewController.swift
 //  MediaKit
 //
-//  Created by Adrian Mateoaea on 09/01/2017.
+//  Created by Adrian Mateoaea on 12/01/2017.
 //  Copyright © 2017 Wonderkiln. All rights reserved.
 //
 
 import UIKit
 
-public class MKCropViewController: UIViewController, MKImageExportController {
+public protocol MKCropViewControllerDelegate: class {
+    func cropViewController(_ controller: MKCropViewController, didFinishCroppingImage image: UIImage)
+    func cropViewController(_ controller: MKCropViewController, didFinishCroppingImage image: UIImage, transform: CGAffineTransform, cropRect: CGRect)
+    func cropViewControllerDidCancel(_ controller: MKCropViewController)
+}
+
+open class MKCropViewController: UIViewController {
     
-    @IBOutlet public weak var scrollView: UIScrollView!
-    @IBOutlet public weak var maskView: MKMaskView!
-    @IBOutlet public weak var gridView: MKGridView! {
+    open weak var delegate: MKCropViewControllerDelegate?
+    
+    open var image: UIImage? {
         didSet {
-            gridView.delegate = self
+            cropView?.image = image
         }
     }
-    @IBOutlet public weak var imageView: UIImageView!
-    
-    @IBOutlet public weak var topLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet public weak var bottomLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet public weak var leadingLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet public weak var trailingLayoutConstraint: NSLayoutConstraint!
-    
-    @IBOutlet public weak var topPaddingLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet public weak var bottomPaddingLayoutConstraint: NSLayoutConstraint!
-    
-    public var originalImage: UIImage? {
+    open var keepAspectRatio = false {
         didSet {
-            imageView.image = originalImage
-            view.layoutIfNeeded()
+            cropView?.keepAspectRatio = keepAspectRatio
         }
     }
-    
-    public var initialZoom: CGFloat = 1.4 {
+    open var cropAspectRatio: CGFloat = 0.0 {
         didSet {
-            view.layoutIfNeeded()
+            cropView?.cropAspectRatio = cropAspectRatio
         }
     }
-    
-    public var afterEffects: [MKProtocol] = [
-        MKResizeImage(toSize: CGSize(width: 1080, height: 1920), fillImage: true)
-    ]
-    
-    public func export(_ callback: @escaping (UIImage) -> Void) {
-        guard let originalImage = originalImage else {
-            return
+    open var cropRect = CGRect.zero {
+        didSet {
+            adjustCropRect()
         }
+    }
+    open var imageCropRect = CGRect.zero {
+        didSet {
+            cropView?.imageCropRect = imageCropRect
+        }
+    }
+    open var rotationEnabled = false {
+        didSet {
+            cropView?.rotationGestureRecognizer.isEnabled = rotationEnabled
+        }
+    }
+    open var rotationTransform: CGAffineTransform {
+        return cropView!.rotation
+    }
+    open var zoomedCropRect: CGRect {
+        return cropView!.zoomedCropRect()
+    }
+
+    public var cropView: MKCropView?
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initialize()
+    }
+    
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        initialize()
+    }
+    
+    fileprivate func initialize() {
+        rotationEnabled = true
+    }
+    
+    open override func loadView() {
+        let contentView = UIView()
+        contentView.autoresizingMask = .flexibleWidth
+        contentView.backgroundColor = UIColor.black
+        view = contentView
         
-        var effects: [MKProtocol] = [MKCropImage(relativeRect: relativeCropRectangle())]
-        effects.append(contentsOf: afterEffects)
-        
-        MKMultipleEffects(effects).apply(to: MKImageType(originalImage)) { (output, _) in
-            callback(output.image)
-        }
+        // Add MKCropView
+        cropView = MKCropView(frame: contentView.bounds)
+        contentView.addSubview(cropView!)
     }
-    
-    public init() {
-        super.init(nibName: "MKCropViewController", bundle: Bundle(for: MKCropViewController.self))
-    }
-    
-    public init(image: UIImage) {
-        self.originalImage = image
-        super.init(nibName: "MKCropViewController", bundle: Bundle(for: MKCropViewController.self))
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    public override func viewDidLoad() {
+
+    open override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let originalImage = originalImage {
-            imageView.image = originalImage
-            view.layoutIfNeeded()
+        cropView?.image = image
+        cropView?.rotationGestureRecognizer.isEnabled = rotationEnabled
+    }
+    
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if cropAspectRatio != 0 {
+            cropView?.cropAspectRatio = cropAspectRatio
+        }
+        
+        if !cropRect.equalTo(CGRect.zero) {
+            adjustCropRect()
+        }
+        
+        if !imageCropRect.equalTo(CGRect.zero) {
+            cropView?.imageCropRect = imageCropRect
+        }
+        
+        cropView?.keepAspectRatio = keepAspectRatio
+    }
+    
+    open func resetCropRect() {
+        cropView?.resetCropRect()
+    }
+    
+    open func resetCropRectAnimated(_ animated: Bool) {
+        cropView?.resetCropRectAnimated(animated)
+    }
+    
+    func cancel(_ sender: UIBarButtonItem) {
+        delegate?.cropViewControllerDidCancel(self)
+    }
+    
+    func done(_ sender: UIBarButtonItem) {
+        if let image = cropView?.croppedImage {
+            delegate?.cropViewController(self, didFinishCroppingImage: image)
+            guard let rotation = cropView?.rotation else {
+                return
+            }
+            guard let rect = cropView?.zoomedCropRect() else {
+                return
+            }
+            delegate?.cropViewController(self, didFinishCroppingImage: image, transform: rotation, cropRect: rect)
         }
     }
     
-    fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
-        let widthScale = size.width / imageView.bounds.width
-        let heightScale = size.height / imageView.bounds.height
-        let minScale = min(widthScale, heightScale) / initialZoom
+    func constrain(_ sender: UIBarButtonItem) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let original = UIAlertAction(title: "Original", style: .default) { [unowned self] action in
+            guard let image = self.cropView?.image else {
+                return
+            }
+            guard var cropRect = self.cropView?.cropRect else {
+                return
+            }
+            let width = image.size.width
+            let height = image.size.height
+            let ratio: CGFloat
+            if width < height {
+                ratio = width / height
+                cropRect.size = CGSize(width: cropRect.height * ratio, height: cropRect.height)
+            } else {
+                ratio = height / width
+                cropRect.size = CGSize(width: cropRect.width, height: cropRect.width * ratio)
+            }
+            self.cropView?.cropRect = cropRect
+        }
+        actionSheet.addAction(original)
+        let square = UIAlertAction(title: "Square", style: .default) { [unowned self] action in
+            let ratio: CGFloat = 1.0
+//            self.cropView?.cropAspectRatio = ratio
+            if var cropRect = self.cropView?.cropRect {
+                let width = cropRect.width
+                cropRect.size = CGSize(width: width, height: width * ratio)
+                self.cropView?.cropRect = cropRect
+            }
+        }
+        actionSheet.addAction(square)
+        let threeByTwo = UIAlertAction(title: "3 x 2", style: .default) { [unowned self] action in
+            self.cropView?.cropAspectRatio = 2.0 / 3.0
+        }
+        actionSheet.addAction(threeByTwo)
+        let threeByFive = UIAlertAction(title: "3 x 5", style: .default) { [unowned self] action in
+            self.cropView?.cropAspectRatio = 3.0 / 5.0
+        }
+        actionSheet.addAction(threeByFive)
+        let fourByThree = UIAlertAction(title: "4 x 3", style: .default) { [unowned self] action in
+            let ratio: CGFloat = 3.0 / 4.0
+            if var cropRect = self.cropView?.cropRect {
+                let width = cropRect.width
+                cropRect.size = CGSize(width: width, height: width * ratio)
+                self.cropView?.cropRect = cropRect
+            }
+        }
+        actionSheet.addAction(fourByThree)
+        let fourBySix = UIAlertAction(title: "4 x 6", style: .default) { [unowned self] action in
+            self.cropView?.cropAspectRatio = 4.0 / 6.0
+        }
+        actionSheet.addAction(fourBySix)
+        let fiveBySeven = UIAlertAction(title: "5 x 7", style: .default) { [unowned self] action in
+            self.cropView?.cropAspectRatio = 5.0 / 7.0
+        }
+        actionSheet.addAction(fiveBySeven)
+        let eightByTen = UIAlertAction(title: "8 x 10", style: .default) { [unowned self] action in
+            self.cropView?.cropAspectRatio = 8.0 / 10.0
+        }
+        actionSheet.addAction(eightByTen)
+        let widescreen = UIAlertAction(title: "16 x 9", style: .default) { [unowned self] action in
+            let ratio: CGFloat = 9.0 / 16.0
+            if var cropRect = self.cropView?.cropRect {
+                let width = cropRect.width
+                cropRect.size = CGSize(width: width, height: width * ratio)
+                self.cropView?.cropRect = cropRect
+            }
+        }
+        actionSheet.addAction(widescreen)
+        let cancel = UIAlertAction(title: "Cancel", style: .default) { [unowned self] action in
+            self.dismiss(animated: true, completion: nil)
+        }
+        actionSheet.addAction(cancel)
         
-        scrollView.minimumZoomScale = minScale
-        scrollView.zoomScale = minScale
+        present(actionSheet, animated: true, completion: nil)
     }
-    
-    fileprivate func updateConstraintsForSize(_ size: CGSize) {
-        let yOffset = max(0, (size.height - imageView.frame.height) / 2)
-        topLayoutConstraint.constant = yOffset
-        bottomLayoutConstraint.constant = yOffset
-        
-        let xOffset = max(0, (size.width - imageView.frame.width) / 2)
-        leadingLayoutConstraint.constant = xOffset
-        trailingLayoutConstraint.constant = xOffset
-        
-        view.layoutIfNeeded()
-    }
-    
-    public override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        updateMinZoomScaleForSize(view.bounds.size)
-        
-        let maskSize = CGSize(width: view.frame.width / 3.0, height: view.frame.width / 3.0)
-        let maskFrame = CGRect(x: (view.frame.width - maskSize.width) / 2.0,
-                               y: (view.frame.height - maskSize.height) / 2.0,
-                               width: maskSize.width,
-                               height: maskSize.height)
-        
-        maskView.maskFrame = maskFrame
-        gridView.frame = maskFrame
-    }
-}
 
-extension MKCropViewController: UIScrollViewDelegate {
-    
-    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return imageView
-    }
-    
-    public func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        updateConstraintsForSize(view.bounds.size)
-    }
-}
-
-extension MKCropViewController: MKGridViewDelegate {
-    
-    public func relativeCropRectangle() -> CGRect {
-        let imageViewFrame = imageView.frame
-            .offsetBy(dx: -scrollView.contentOffset.x, dy: -scrollView.contentOffset.y)
+    // MARK: - Private methods
+    fileprivate func adjustCropRect() {
+        imageCropRect = CGRect.zero
         
-        let gridViewFrame = imageViewFrame.intersection(gridView.frame)
-            .offsetBy(dx: scrollView.contentOffset.x, dy: scrollView.contentOffset.y)
+        guard var cropViewCropRect = cropView?.cropRect else {
+            return
+        }
+        cropViewCropRect.origin.x += cropRect.origin.x
+        cropViewCropRect.origin.y += cropRect.origin.y
         
-        
-        return CGRect(x: (gridViewFrame.origin.x - imageView.frame.origin.x) / imageView.frame.width,
-                      y: (gridViewFrame.origin.y - imageView.frame.origin.y) / imageView.frame.height,
-                      width: gridViewFrame.width / imageView.frame.width,
-                      height: gridViewFrame.height / imageView.frame.height)
-    }
-    
-    public func gridView(_ view: MKGridView, didChangeFrameTo newFrame: CGRect) {
-        maskView.maskFrame = newFrame
+        let minWidth = min(cropViewCropRect.maxX - cropViewCropRect.minX, cropRect.width)
+        let minHeight = min(cropViewCropRect.maxY - cropViewCropRect.minY, cropRect.height)
+        let size = CGSize(width: minWidth, height: minHeight)
+        cropViewCropRect.size = size
+        cropView?.cropRect = cropViewCropRect
     }
 }
