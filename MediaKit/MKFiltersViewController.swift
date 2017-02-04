@@ -18,6 +18,7 @@ public class MKFiltersViewController: UIViewController, MKImageExportController 
     }
     @IBOutlet public weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet public weak var collectionView: UICollectionView!
+    @IBOutlet public weak var bottomLayoutConstraint: NSLayoutConstraint!
     
     private class MKEmpty: MKProtocol {
         

@@ -24,6 +24,9 @@ public class MKCropViewController: UIViewController, MKImageExportController {
     @IBOutlet weak var leadingLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailingLayoutConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var topPaddingLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomPaddingLayoutConstraint: NSLayoutConstraint!
+    
     public var originalImage: UIImage? {
         didSet {
             imageView.image = originalImage

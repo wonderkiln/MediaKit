@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MKFiltersViewController" customModule="MediaKit" customModuleProvider="target">
             <connections>
+                <outlet property="bottomLayoutConstraint" destination="9is-FD-phc" id="Ql7-HI-IPT"/>
                 <outlet property="collectionView" destination="dHR-qb-5PM" id="Fup-jg-7Kg"/>
                 <outlet property="imageView" destination="dj8-CT-gaK" id="Yg4-ny-uah"/>
                 <outlet property="indicatorContainerView" destination="AQ9-1e-M6i" id="zrG-Fe-j49"/>
@@ -54,9 +55,6 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHR-qb-5PM">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="akm-Ws-KyP"/>
-                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lKM-cb-nFm">
                                     <size key="itemSize" width="80" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>

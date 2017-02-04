@@ -33,6 +33,7 @@
 		3A7B5F231E45F602005D439E /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5F201E45F602005D439E /* FiltersViewController.swift */; };
 		3A7B5F241E45F602005D439E /* TrimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5F211E45F602005D439E /* TrimViewController.swift */; };
 		3A7B5F271E45F613005D439E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B5F251E45F613005D439E /* Main.storyboard */; };
+		3AA615C51E461C990031394B /* MediaKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3AA615C41E461C990031394B /* MediaKit.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		3A7B5F201E45F602005D439E /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		3A7B5F211E45F602005D439E /* TrimViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrimViewController.swift; sourceTree = "<group>"; };
 		3A7B5F261E45F613005D439E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3AA615C41E461C990031394B /* MediaKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MediaKit.podspec; path = ../MediaKit.podspec; sourceTree = "<group>"; };
 		C7D0779DAC13C4F18D6CFFFA /* Pods-MediaKit Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediaKit Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MediaKit Example/Pods-MediaKit Example.release.xcconfig"; sourceTree = "<group>"; };
 		D887E35774EE99AE00DFF65D /* Pods_MediaKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediaKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -114,6 +116,7 @@
 		3A7B5EF61E45F5E4005D439E /* MediaKit */ = {
 			isa = PBXGroup;
 			children = (
+				3AA615C41E461C990031394B /* MediaKit.podspec */,
 				3A7B5F291E45FA40005D439E /* UI */,
 				3A7B5EFB1E45F5E4005D439E /* MKEffect.swift */,
 				3A7B5EFD1E45F5E4005D439E /* MKFilter.swift */,
@@ -239,6 +242,7 @@
 				3A7B5F151E45F5E4005D439E /* MKFiltersViewController.xib in Resources */,
 				3A7B5F0E1E45F5E4005D439E /* MKCropViewController.xib in Resources */,
 				3A7B5F1E1E45F5E4005D439E /* MKTrimVideoViewController.xib in Resources */,
+				3AA615C51E461C990031394B /* MediaKit.podspec in Resources */,
 				3A7B5EEF1E45F50A005D439E /* LaunchScreen.storyboard in Resources */,
 				3A7B5F131E45F5E4005D439E /* MKFilterCollectionViewCell.xib in Resources */,
 				3A7B5EEC1E45F50A005D439E /* Assets.xcassets in Resources */,
