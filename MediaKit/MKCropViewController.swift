@@ -10,22 +10,22 @@ import UIKit
 
 public class MKCropViewController: UIViewController, MKImageExportController {
     
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var maskView: MKMaskView!
-    @IBOutlet weak var gridView: MKGridView! {
+    @IBOutlet public weak var scrollView: UIScrollView!
+    @IBOutlet public weak var maskView: MKMaskView!
+    @IBOutlet public weak var gridView: MKGridView! {
         didSet {
             gridView.delegate = self
         }
     }
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet public weak var imageView: UIImageView!
     
-    @IBOutlet weak var topLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var leadingLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var trailingLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet public weak var topLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet public weak var bottomLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet public weak var leadingLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet public weak var trailingLayoutConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var topPaddingLayoutConstraint: NSLayoutConstraint!
-    @IBOutlet weak var bottomPaddingLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet public weak var topPaddingLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet public weak var bottomPaddingLayoutConstraint: NSLayoutConstraint!
     
     public var originalImage: UIImage? {
         didSet {
