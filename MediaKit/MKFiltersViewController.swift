@@ -74,12 +74,11 @@ public class MKFiltersViewController: UIViewController, MKImageExportController 
     public var originalImage: UIImage? {
         didSet {
             if let originalImage = originalImage {
-                scaleOriginalImage(originalImage)
+                updateFullImage(withFilter: selectedEffect)
+                updateAllFilterImages()
             }
         }
     }
-    
-    fileprivate var scaledImage: UIImage?
     
     public init() {
         super.init(nibName: "MKFiltersViewController", bundle: Bundle(for: MKFiltersViewController.self))
@@ -104,7 +103,8 @@ public class MKFiltersViewController: UIViewController, MKImageExportController 
         filteredImages = Array(repeating: nil, count: filters.count)
         
         if let originalImage = originalImage {
-            scaleOriginalImage(originalImage)
+            updateFullImage(withFilter: selectedEffect)
+            updateAllFilterImages()
         }
     }
     
@@ -115,26 +115,6 @@ public class MKFiltersViewController: UIViewController, MKImageExportController 
             isBusy ?
                 indicatorView.startAnimating() :
                 indicatorView.stopAnimating()
-        }
-    }
-    
-    fileprivate func scaleOriginalImage(_ image: UIImage) {
-        isBusy = true
-        
-        updateAllFilterImages()
-        
-        var effects: [MKProtocol] = [
-            MKResizeImage(toSize: imageView.frame.size, fillImage: false)
-        ]
-        
-        if let selectedEffect = selectedEffect {
-            effects.append(selectedEffect)
-        }
-        
-        MKMultipleEffects(effects).apply(to: MKImageType(image)) { (output, error) in
-            self.scaledImage = output.image
-            self.imageView.image = output.image
-            self.isBusy = false
         }
     }
     
@@ -160,12 +140,16 @@ public class MKFiltersViewController: UIViewController, MKImageExportController 
         })
     }
     
-    fileprivate func updateFullImage(withFilter filter: MKProtocol) {
-        guard let scaledImage = scaledImage else {
+    fileprivate func updateFullImage(withFilter filter: MKProtocol?) {
+        guard let originalImage = originalImage else {
+            return
+        }
+        guard let filter = filter else {
+            imageView.image = originalImage
             return
         }
         self.isBusy = true
-        MKMultipleEffects([filter]).apply(to: MKImageType(scaledImage), { (output, _) in
+        MKMultipleEffects([filter]).apply(to: MKImageType(originalImage), { (output, _) in
             self.imageView.image = output.image
             self.isBusy = false
         })
