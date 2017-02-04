@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MKCropViewController" customModule="MediaKit" customModuleProvider="target">
+            <connections>
+                <outlet property="bottomLayoutConstraint" destination="Gq4-gq-tTY" id="ALN-dh-AXQ"/>
+                <outlet property="gridView" destination="rW7-bp-msD" id="NfL-Pe-H4n"/>
+                <outlet property="imageView" destination="WJu-oV-sUP" id="YEO-OC-wrJ"/>
+                <outlet property="leadingLayoutConstraint" destination="EGh-XP-7Or" id="dFb-1b-lzg"/>
+                <outlet property="maskView" destination="QaE-uN-rrK" id="7w4-b2-GUg"/>
+                <outlet property="scrollView" destination="ED9-tJ-n9Y" id="jFd-lu-A2L"/>
+                <outlet property="topLayoutConstraint" destination="OMq-4C-lIi" id="Bnd-r0-Tit"/>
+                <outlet property="trailingLayoutConstraint" destination="nt7-8G-9VI" id="9ES-Z0-Tii"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="ED9-tJ-n9Y">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WJu-oV-sUP">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="WJu-oV-sUP" firstAttribute="leading" secondItem="ED9-tJ-n9Y" secondAttribute="leading" id="EGh-XP-7Or"/>
+                        <constraint firstAttribute="bottom" secondItem="WJu-oV-sUP" secondAttribute="bottom" id="Gq4-gq-tTY"/>
+                        <constraint firstItem="WJu-oV-sUP" firstAttribute="top" secondItem="ED9-tJ-n9Y" secondAttribute="top" id="OMq-4C-lIi"/>
+                        <constraint firstAttribute="trailing" secondItem="WJu-oV-sUP" secondAttribute="trailing" id="nt7-8G-9VI"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="uA4-Pe-EwB"/>
+                    </connections>
+                </scrollView>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QaE-uN-rrK" customClass="MKMaskView" customModule="MediaKit" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rW7-bp-msD" customClass="MKGridView" customModule="MediaKit" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="QaE-uN-rrK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3v1-6i-ahb"/>
+                <constraint firstItem="QaE-uN-rrK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4TB-o1-0iO"/>
+                <constraint firstAttribute="trailing" secondItem="QaE-uN-rrK" secondAttribute="trailing" id="6i7-Ym-kDo"/>
+                <constraint firstAttribute="trailing" secondItem="ED9-tJ-n9Y" secondAttribute="trailing" id="C4n-5R-2WG"/>
+                <constraint firstItem="ED9-tJ-n9Y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Wcs-lp-SSs"/>
+                <constraint firstItem="ED9-tJ-n9Y" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gVm-4F-vfk"/>
+                <constraint firstAttribute="bottom" secondItem="QaE-uN-rrK" secondAttribute="bottom" id="lGd-94-CiM"/>
+                <constraint firstAttribute="bottom" secondItem="ED9-tJ-n9Y" secondAttribute="bottom" id="z2i-Cr-qbI"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <point key="canvasLocation" x="35.5" y="53.5"/>
+        </view>
+    </objects>
+</document>
