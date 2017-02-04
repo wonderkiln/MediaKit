@@ -15,9 +15,12 @@ protocol MKResizeControlDelegate: class {
 }
 
 class MKResizeControl: UIView {
+    
     weak var delegate: MKResizeControlDelegate?
+    
     var translation = CGPoint.zero
     var enabled = true
+    
     fileprivate var startPoint = CGPoint.zero
 
     override init(frame: CGRect) {
@@ -56,6 +59,5 @@ class MKResizeControl: UIView {
             delegate?.resizeControlDidEndResizing(self)
         default: ()
         }
-        
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 
 open class MKCropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate, MKCropRectViewDelegate {
+    
     open var image: UIImage? {
         didSet {
             if image != nil {
@@ -103,6 +104,7 @@ open class MKCropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate
         }
     }
     open var rotationGestureRecognizer: UIRotationGestureRecognizer!
+    
     fileprivate var imageSize = CGSize(width: 1.0, height: 1.0)
     fileprivate var scrollView: UIScrollView!
     fileprivate var zoomingView: UIView?
@@ -116,7 +118,7 @@ open class MKCropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate
     fileprivate var interfaceOrientation = UIApplication.shared.statusBarOrientation
     fileprivate var resizing = false
     fileprivate var usingCustomImageView = false
-    fileprivate let MarginTop: CGFloat = 37.0
+    fileprivate let MarginTop: CGFloat = 64.0
     fileprivate let MarginLeft: CGFloat = 20.0
 
     public override init(frame: CGRect) {
@@ -218,7 +220,6 @@ open class MKCropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate
                 zoomToCropRect(scrollView.frame)
             }
         }
-        
         
         self.interfaceOrientation = interfaceOrientation
     }

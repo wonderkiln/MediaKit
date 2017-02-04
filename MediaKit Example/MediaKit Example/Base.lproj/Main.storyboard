@@ -38,11 +38,11 @@
                         <viewControllerLayoutGuide type="bottom" id="qq0-dX-gNa"/>
                     </layoutGuides>
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="nzi-SL-NYb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Crop" id="VPC-jv-8Oc"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bl5-Qk-o8c" userLabel="First Responder" sceneMemberID="firstResponder"/>

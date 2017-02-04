@@ -15,7 +15,9 @@ protocol MKCropRectViewDelegate: class {
 }
 
 class MKCropRectView: UIView, MKResizeControlDelegate {
+    
     weak var delegate: MKCropRectViewDelegate?
+    
     var showsGridMajor = true {
         didSet {
             setNeedsDisplay()
@@ -62,7 +64,7 @@ class MKCropRectView: UIView, MKResizeControlDelegate {
         backgroundColor = UIColor.clear
         contentMode = .redraw
         
-        resizeImageView = UIImageView(frame: bounds.insetBy(dx: 0.0, dy: 0.0))
+        resizeImageView = UIImageView(frame: bounds)
         resizeImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         let bundle = Bundle(for: type(of: self))
         resizeImageView.image = UIImage(named: "PhotoCropEditorBorder", in: bundle, compatibleWith: nil)

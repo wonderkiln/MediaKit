@@ -17,7 +17,7 @@ class CropViewController: UIViewController {
         super.viewDidLoad()
         
         let cropViewController = MKCropViewController()
-        cropViewController.view.frame = CGRect(x: 0, y: 64, width: view.frame.width, height: view.frame.height - 64)
+        cropViewController.view.frame = view.bounds
         view.addSubview(cropViewController.view)
         self.addChildViewController(cropViewController)
         cropViewController.didMove(toParentViewController: self)
