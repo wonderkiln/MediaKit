@@ -41,7 +41,7 @@ public class MKFiltersViewController: UIViewController, MKImageExportController 
         MKPhotoTransferFilter(),
         MKTonalFilter(),
         MKInvertFilter(),
-    ] {
+        ] {
         didSet {
             filteredImages = Array(repeating: nil, count: filters.count)
         }
@@ -49,22 +49,17 @@ public class MKFiltersViewController: UIViewController, MKImageExportController 
     
     fileprivate var selectedEffect: MKProtocol?
     
-    public var afterEffects: [MKProtocol] = [
-        MKResizeImage(toSize: CGSize(width: 1080, height: 1920), fillImage: true)
-    ]
-    
     public func export(_ completion: @escaping (UIImage) -> Void) {
         guard let originalImage = originalImage else {
             return
         }
+        
         guard let selectedEffect = selectedEffect else {
+            completion(originalImage)
             return
         }
         
-        var effects: [MKProtocol] = [selectedEffect]
-        effects.append(contentsOf: afterEffects)
-        
-        let effect = MKMultipleEffects(effects)
+        let effect = MKMultipleEffects([selectedEffect])
         effect.apply(to: MKImageType(originalImage)) { (output, error) in
             completion(output.image)
         }
@@ -126,24 +121,35 @@ public class MKFiltersViewController: UIViewController, MKImageExportController 
     fileprivate func scaleOriginalImage(_ image: UIImage) {
         isBusy = true
         
-        let effect = MKMultipleEffects([
+        updateAllFilterImages()
+        
+        var effects: [MKProtocol] = [
             MKResizeImage(toSize: imageView.frame.size, fillImage: false)
-        ])
-        effect.apply(to: MKImageType(image)) { (output, error) in
+        ]
+        
+        if let selectedEffect = selectedEffect {
+            effects.append(selectedEffect)
+        }
+        
+        MKMultipleEffects(effects).apply(to: MKImageType(image)) { (output, error) in
             self.scaledImage = output.image
             self.imageView.image = output.image
             self.isBusy = false
-            self.updateAllFilterImages()
         }
     }
     
     fileprivate func updateAllFilterImages() {
-        guard let scaledImage = scaledImage else {
+        guard let originalImage = originalImage else {
             return
         }
         
-        filters.enumerated().forEach { (index, filter) in
-            updateFilterImage(scaledImage, atIndex: index, withFilter: filter)
+        let effect = MKMultipleEffects([
+            MKResizeImage(toSize: CGSize(width: 100, height: 100), fillImage: false)
+            ])
+        effect.apply(to: MKImageType(originalImage)) { (output, _) in
+            self.filters.enumerated().forEach { (index, filter) in
+                self.updateFilterImage(output.image, atIndex: index, withFilter: filter)
+            }
         }
     }
     
@@ -151,6 +157,17 @@ public class MKFiltersViewController: UIViewController, MKImageExportController 
         MKMultipleEffects([filter]).apply(to: MKImageType(image), { (output, error) in
             self.filteredImages[index] = output.image
             self.collectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
+        })
+    }
+    
+    fileprivate func updateFullImage(withFilter filter: MKProtocol) {
+        guard let scaledImage = scaledImage else {
+            return
+        }
+        self.isBusy = true
+        MKMultipleEffects([filter]).apply(to: MKImageType(scaledImage), { (output, _) in
+            self.imageView.image = output.image
+            self.isBusy = false
         })
     }
 }
@@ -176,8 +193,6 @@ extension MKFiltersViewController: UICollectionViewDelegate, UICollectionViewDat
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedEffect = filters[indexPath.row]
-        if let image = filteredImages[indexPath.row] {
-            imageView.image = image
-        }
+        updateFullImage(withFilter: filters[indexPath.row])
     }
 }
