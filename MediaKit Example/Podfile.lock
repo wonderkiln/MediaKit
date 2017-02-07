@@ -1,6 +1,8 @@
 PODS:
   - MARKRangeSlider (1.1.1)
-  - MediaKit (0.0.3):
+  - MediaKit (0.0.5):
+    - MediaKit/Core (= 0.0.5)
+  - MediaKit/Core (0.0.5):
     - MARKRangeSlider (~> 1.1)
 
 DEPENDENCIES:
@@ -12,8 +14,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   MARKRangeSlider: ef7e1fe84d22996f47fd72dcb8de50b9410aac47
-  MediaKit: 59e00bcdba28429ad487e3de8b7bd6a581bcf962
+  MediaKit: 3ba33da2692c746b277b99dc0bdfb3c9a3e718d4
 
-PODFILE CHECKSUM: 14130a4243d18f6f104d01801af130cb8b0f8f6c
+PODFILE CHECKSUM: dbfdbf9bbcba75b0e9009e93eb6eb67dbd4083e9
 
 COCOAPODS: 1.1.1
