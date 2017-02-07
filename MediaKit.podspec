@@ -10,8 +10,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "9.0"
   s.watchos.deployment_target = "2.0"
 
-  s.default_subspec = "Core"
-
   s.subspec "Core" do |core|
     core.source_files = "MediaKit/*.swift"
     core.resources    = "MediaKit/*.{xib,storyboard,xcassets}"
