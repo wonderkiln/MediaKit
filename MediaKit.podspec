@@ -19,8 +19,7 @@ Pod::Spec.new do |s|
   end
   
   s.subspec "WebP" do |webp|
-      webp.source_files = "MediaKit/WebP*.swift"
+      webp.source_files = "MediaKit/WebP/*.swift"
       webp.dependency "YYImage", "~> 1.0"
-      webp.dependency "MediaKit/Core"
   end
 end
