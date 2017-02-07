@@ -11,7 +11,7 @@ import YYImage
 
 public extension Data {
     
-    public func webp_DataImage() -> UIImage? {
+    public func webp_Image() -> UIImage? {
         let decoder = YYImageDecoder(data: self, scale: UIScreen.main.scale)
         let image = decoder?.frame(at: 0, decodeForDisplay: true)?.image
         
