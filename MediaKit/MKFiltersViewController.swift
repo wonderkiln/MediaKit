@@ -73,7 +73,7 @@ public class MKFiltersViewController: UIViewController, MKImageExportController 
     
     public var originalImage: UIImage? {
         didSet {
-            if let originalImage = originalImage {
+            if originalImage != nil {
                 updateFullImage(withFilter: selectedEffect)
                 updateAllFilterImages()
             }
@@ -102,7 +102,7 @@ public class MKFiltersViewController: UIViewController, MKImageExportController 
         
         filteredImages = Array(repeating: nil, count: filters.count)
         
-        if let originalImage = originalImage {
+        if originalImage != nil {
             updateFullImage(withFilter: selectedEffect)
             updateAllFilterImages()
         }

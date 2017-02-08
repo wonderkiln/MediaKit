@@ -1,15 +1,7 @@
 PODS:
   - MARKRangeSlider (1.1.1)
-  - MediaKit (0.0.5):
-    - MediaKit/Core (= 0.0.5)
-    - MediaKit/WebP (= 0.0.5)
-  - MediaKit/Core (0.0.5):
+  - MediaKit (0.0.6):
     - MARKRangeSlider (~> 1.1)
-  - MediaKit/WebP (0.0.5):
-    - YYImage/WebP (~> 1.0)
-  - YYImage/Core (1.0.4)
-  - YYImage/WebP (1.0.4):
-    - YYImage/Core
 
 DEPENDENCIES:
   - MediaKit (from `..`)
@@ -20,9 +12,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   MARKRangeSlider: ef7e1fe84d22996f47fd72dcb8de50b9410aac47
-  MediaKit: 2f6ee0a6519e631bf2e0e9099fc3ac1cc86937d2
-  YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
+  MediaKit: 407155c3036360810d7520d3eeca8ac7d4030d4d
 
 PODFILE CHECKSUM: dbfdbf9bbcba75b0e9009e93eb6eb67dbd4083e9
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0

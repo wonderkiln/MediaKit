@@ -14,8 +14,6 @@
 		3A01E4A41E46453C00D1BD8F /* MKResizeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E49C1E46453B00D1BD8F /* MKResizeControl.swift */; };
 		3A01E4A51E46453C00D1BD8F /* UIImage+Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E49D1E46453B00D1BD8F /* UIImage+Crop.swift */; };
 		3A01E4A71E4647BC00D1BD8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A01E4A61E4647BC00D1BD8F /* Assets.xcassets */; };
-		3A763C321E4A4721005C016A /* ConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A763C311E4A4721005C016A /* ConversionViewController.swift */; };
-		3A763C341E4A4750005C016A /* UIImage+WebP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A763C331E4A4750005C016A /* UIImage+WebP.swift */; };
 		3A7B5EE51E45F50A005D439E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5EE41E45F50A005D439E /* AppDelegate.swift */; };
 		3A7B5EEC1E45F50A005D439E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B5EEB1E45F50A005D439E /* Assets.xcassets */; };
 		3A7B5EEF1E45F50A005D439E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B5EED1E45F50A005D439E /* LaunchScreen.storyboard */; };
@@ -38,7 +36,6 @@
 		3A7B5F241E45F602005D439E /* TrimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5F211E45F602005D439E /* TrimViewController.swift */; };
 		3A7B5F271E45F613005D439E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B5F251E45F613005D439E /* Main.storyboard */; };
 		3AA615C51E461C990031394B /* MediaKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3AA615C41E461C990031394B /* MediaKit.podspec */; };
-		3AED913C1E49E98300B42D6C /* Data+WebP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AED913B1E49E98300B42D6C /* Data+WebP.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,8 +46,6 @@
 		3A01E49C1E46453B00D1BD8F /* MKResizeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKResizeControl.swift; sourceTree = "<group>"; };
 		3A01E49D1E46453B00D1BD8F /* UIImage+Crop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Crop.swift"; sourceTree = "<group>"; };
 		3A01E4A61E4647BC00D1BD8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3A763C311E4A4721005C016A /* ConversionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversionViewController.swift; sourceTree = "<group>"; };
-		3A763C331E4A4750005C016A /* UIImage+WebP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+WebP.swift"; sourceTree = "<group>"; };
 		3A7B5EE11E45F50A005D439E /* MediaKit Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MediaKit Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7B5EE41E45F50A005D439E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A7B5EEB1E45F50A005D439E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,7 +70,6 @@
 		3A7B5F211E45F602005D439E /* TrimViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrimViewController.swift; sourceTree = "<group>"; };
 		3A7B5F261E45F613005D439E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3AA615C41E461C990031394B /* MediaKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MediaKit.podspec; path = ../MediaKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		3AED913B1E49E98300B42D6C /* Data+WebP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+WebP.swift"; sourceTree = "<group>"; };
 		C7D0779DAC13C4F18D6CFFFA /* Pods-MediaKit Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediaKit Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MediaKit Example/Pods-MediaKit Example.release.xcconfig"; sourceTree = "<group>"; };
 		D887E35774EE99AE00DFF65D /* Pods_MediaKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediaKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -139,15 +133,6 @@
 			name = MKTrimVideoViewController;
 			sourceTree = "<group>";
 		};
-		3A6DD96B1E49059E00EB0536 /* WebP */ = {
-			isa = PBXGroup;
-			children = (
-				3AED913B1E49E98300B42D6C /* Data+WebP.swift */,
-				3A763C331E4A4750005C016A /* UIImage+WebP.swift */,
-			);
-			path = WebP;
-			sourceTree = "<group>";
-		};
 		3A7B5ED81E45F509005D439E = {
 			isa = PBXGroup;
 			children = (
@@ -173,7 +158,6 @@
 				3A7B5F251E45F613005D439E /* Main.storyboard */,
 				3A7B5F201E45F602005D439E /* FiltersViewController.swift */,
 				3A7B5F1F1E45F602005D439E /* CropViewController.swift */,
-				3A763C311E4A4721005C016A /* ConversionViewController.swift */,
 				3A7B5F211E45F602005D439E /* TrimViewController.swift */,
 				3A7B5F281E45F62A005D439E /* Supporting Files */,
 			);
@@ -188,7 +172,6 @@
 				3A01E4A81E464C1000D1BD8F /* MKCropViewController */,
 				3A01E4AB1E464D9800D1BD8F /* MKTrimVideoViewController */,
 				3A01E4A91E464C3000D1BD8F /* MKProtocol */,
-				3A6DD96B1E49059E00EB0536 /* WebP */,
 				3A01E4A61E4647BC00D1BD8F /* Assets.xcassets */,
 			);
 			name = MediaKit;
@@ -353,13 +336,10 @@
 			files = (
 				3A7B5F1D1E45F5E4005D439E /* MKTrimVideoViewController.swift in Sources */,
 				3A01E4A41E46453C00D1BD8F /* MKResizeControl.swift in Sources */,
-				3A763C341E4A4750005C016A /* UIImage+WebP.swift in Sources */,
 				3A01E49E1E46453B00D1BD8F /* MKCropRectView.swift in Sources */,
 				3A7B5F241E45F602005D439E /* TrimViewController.swift in Sources */,
 				3A01E49F1E46453B00D1BD8F /* MKCropView.swift in Sources */,
 				3A7B5F0F1E45F5E4005D439E /* MKProtocol.swift in Sources */,
-				3A763C321E4A4721005C016A /* ConversionViewController.swift in Sources */,
-				3AED913C1E49E98300B42D6C /* Data+WebP.swift in Sources */,
 				3A01E4A51E46453C00D1BD8F /* UIImage+Crop.swift in Sources */,
 				3A7B5F171E45F5E4005D439E /* MKImageExportController.swift in Sources */,
 				3A7B5F141E45F5E4005D439E /* MKFiltersViewController.swift in Sources */,

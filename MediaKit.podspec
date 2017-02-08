@@ -10,14 +10,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "9.0"
   s.watchos.deployment_target = "2.2"
 
-  s.subspec "Core" do |core|
-    core.source_files = "MediaKit/*.swift"
-    core.resources    = "MediaKit/*.{xib,storyboard,xcassets}"
-    core.dependency "MARKRangeSlider", "~> 1.1"
-  end
-  
-  s.subspec "WebP" do |webp|
-      webp.source_files = "MediaKit/WebP/*.swift"
-      webp.dependency "YYImage/WebP", "~> 1.0"
-  end
+  s.source_files = "MediaKit/*.swift"
+  s.resources    = "MediaKit/*.{xib,storyboard,xcassets}"
+  s.dependency "MARKRangeSlider", "~> 1.1"
 end
