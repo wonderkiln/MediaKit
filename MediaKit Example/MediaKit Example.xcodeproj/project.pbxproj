@@ -46,6 +46,7 @@
 		3A01E49C1E46453B00D1BD8F /* MKResizeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKResizeControl.swift; sourceTree = "<group>"; };
 		3A01E49D1E46453B00D1BD8F /* UIImage+Crop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Crop.swift"; sourceTree = "<group>"; };
 		3A01E4A61E4647BC00D1BD8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3A03D1301E4C61E500595348 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3A7B5EE11E45F50A005D439E /* MediaKit Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MediaKit Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7B5EE41E45F50A005D439E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A7B5EEB1E45F50A005D439E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -192,6 +193,7 @@
 		73BA4D85F2FBF7F4978B1D47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A03D1301E4C61E500595348 /* AVFoundation.framework */,
 				D887E35774EE99AE00DFF65D /* Pods_MediaKit_Example.framework */,
 			);
 			name = Frameworks;
@@ -241,6 +243,7 @@
 				TargetAttributes = {
 					3A7B5EE01E45F509005D439E = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 72VA7VUQ8T;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -476,6 +479,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 72VA7VUQ8T;
 				INFOPLIST_FILE = "MediaKit Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.flurgle.MediaKit-Example";
@@ -490,6 +494,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 72VA7VUQ8T;
 				INFOPLIST_FILE = "MediaKit Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.flurgle.MediaKit-Example";

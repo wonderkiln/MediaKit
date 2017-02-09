@@ -44,8 +44,6 @@ public class MKResizeImage: MKProtocol {
             }
         }
         
-        print(aspectSize)
-        
         guard let imageSource = CGImageSourceCreateWithData(data, nil) else {
             return completion(input, MKError(""))
         }

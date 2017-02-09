@@ -24,7 +24,7 @@ class CropViewController: UIViewController {
         cropViewController.image = #imageLiteral(resourceName: "Picture")
         self.cropViewController = cropViewController
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Crop Image", style: .plain, target: self, action: #selector(didTapCropButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Crop", style: .plain, target: self, action: #selector(didTapCropButton))
     }
     
     func didTapCropButton() {
