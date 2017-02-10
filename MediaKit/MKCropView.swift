@@ -118,8 +118,7 @@ open class MKCropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate
     fileprivate var interfaceOrientation = UIApplication.shared.statusBarOrientation
     fileprivate var resizing = false
     fileprivate var usingCustomImageView = false
-    fileprivate let MarginTop: CGFloat = 64.0
-    fileprivate let MarginLeft: CGFloat = 20.0
+    fileprivate let margins: CGSize = CGSize(width: 20, height: 20)
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -190,9 +189,9 @@ open class MKCropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate
 
         if imageView == nil {
             if UIInterfaceOrientationIsPortrait(interfaceOrientation) {
-                insetRect = bounds.insetBy(dx: MarginLeft, dy: MarginTop)
+                insetRect = bounds.insetBy(dx: margins.width, dy: margins.height)
             } else {
-                insetRect = bounds.insetBy(dx: MarginLeft, dy: MarginLeft)
+                insetRect = bounds.insetBy(dx: margins.width, dy: margins.height)
             }
             if !showCroppedArea {
                 insetRect = editingRect
@@ -201,9 +200,9 @@ open class MKCropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate
             setupImageView()
         } else if usingCustomImageView {
             if UIInterfaceOrientationIsPortrait(interfaceOrientation) {
-                insetRect = bounds.insetBy(dx: MarginLeft, dy: MarginTop)
+                insetRect = bounds.insetBy(dx: margins.width, dy: margins.height)
             } else {
-                insetRect = bounds.insetBy(dx: MarginLeft, dy: MarginLeft)
+                insetRect = bounds.insetBy(dx: margins.width, dy: margins.height)
             }
             if !showCroppedArea {
                 insetRect = editingRect
@@ -306,9 +305,9 @@ open class MKCropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate
     fileprivate func setupEditingRect() {
         let interfaceOrientation = UIApplication.shared.statusBarOrientation
         if UIInterfaceOrientationIsPortrait(interfaceOrientation) {
-            editingRect = bounds.insetBy(dx: MarginLeft, dy: MarginTop)
+            editingRect = bounds.insetBy(dx: margins.width, dy: margins.height)
         } else {
-            editingRect = bounds.insetBy(dx: MarginLeft, dy: MarginLeft)
+            editingRect = bounds.insetBy(dx: margins.width, dy: margins.height)
         }
         if !showCroppedArea {
             editingRect = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)

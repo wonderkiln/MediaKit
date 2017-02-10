@@ -1,42 +1,58 @@
 //
 //  MKFilter.swift
-//  MediaKit
+//  MediaKit Example
 //
-//  Created by Adrian Mateoaea on 05/01/2017.
-//  Copyright © 2017 Wonderkiln. All rights reserved.
+//  Created by Adrian Mateoaea on 10/02/2017.
+//  Copyright © 2017 Flurgle. All rights reserved.
 //
 
 import UIKit
-import CoreImage
 
-public protocol MKFilter: MKProtocol {
-    var filter: CIFilter { get set }
+public struct MKFilterProperty {
+    
+    public var displayName: String
+    public var propertyKey: String
+    public var minimum: Float = 0
+    public var maximum: Float = 1
+    public var value: Float = 0.5
+    
+    public init(name: String, key: String, value: Float, minimum: Float, maximum: Float) {
+        self.displayName = name
+        self.propertyKey = key
+        self.value = value
+        self.minimum = minimum
+        self.maximum = maximum
+    }
 }
 
-extension MKFilter {
+public struct MKFilter {
     
-    public func apply<InputType : MKInputType>(to input: InputType, _ completion: @escaping (InputType, Error?) -> Void) {
-        guard let media = input as? MKImageType else {
-            return completion(input, MKError("`MKFilter` only works with `MKImageType` types"))
+    public var displayName: String
+    public var filter: CIFilter
+    
+    public init(name: String, filterName: String) {
+        self.filter = CIFilter(name: filterName)!
+        self.displayName = name
+    }
+    
+    public var properties: [MKFilterProperty] {
+        let inputNames = filter.inputKeys.filter { parameterName -> Bool in
+            return parameterName != "inputImage"
         }
         
-        let inputImage = CIImage(image: media.image)
-        filter.setValue(inputImage, forKey: kCIInputImageKey)
+        let attributes = filter.attributes
         
-        guard let outputImage = filter.outputImage else {
-            return completion(input, MKError( ""))
+        return inputNames.flatMap { inputName -> MKFilterProperty? in
+            let attribute = attributes[inputName] as! [String: Any]
+            
+            guard let minValue = attribute[kCIAttributeSliderMin] as? Float,
+                let maxValue = attribute[kCIAttributeSliderMax] as? Float,
+                let defaultValue = attribute[kCIAttributeDefault] as? Float else {
+                    return nil
+            }
+            
+            let name = inputName.substring(from: inputName.index(inputName.startIndex, offsetBy: 5))
+            return MKFilterProperty(name: name, key: inputName, value: defaultValue, minimum: minValue, maximum: maxValue)
         }
-        
-        let options = [
-            kCIContextUseSoftwareRenderer: false
-        ]
-        let context = CIContext(options: options)
-        
-        guard let finalImage = context.createCGImage(outputImage, from: outputImage.extent) else {
-            return completion(input, MKError(""))
-        }
-        
-        let image = UIImage(cgImage: finalImage)
-        completion(MKImageType(image) as! InputType, nil)
     }
 }
