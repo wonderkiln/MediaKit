@@ -14,26 +14,14 @@
 		3A01E4A41E46453C00D1BD8F /* MKResizeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E49C1E46453B00D1BD8F /* MKResizeControl.swift */; };
 		3A01E4A51E46453C00D1BD8F /* UIImage+Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E49D1E46453B00D1BD8F /* UIImage+Crop.swift */; };
 		3A01E4A71E4647BC00D1BD8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A01E4A61E4647BC00D1BD8F /* Assets.xcassets */; };
+		3A2A1B1B1E4DDABB007660AC /* MKFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A1B1A1E4DDABB007660AC /* MKFilter.swift */; };
+		3A2A1B1D1E4DDAD1007660AC /* MKFilteredImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A1B1C1E4DDAD1007660AC /* MKFilteredImageView.swift */; };
+		3A2A1B1F1E4DDAF9007660AC /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A1B1E1E4DDAF9007660AC /* UIImage+Resize.swift */; };
 		3A7B5EE51E45F50A005D439E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5EE41E45F50A005D439E /* AppDelegate.swift */; };
 		3A7B5EEC1E45F50A005D439E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B5EEB1E45F50A005D439E /* Assets.xcassets */; };
 		3A7B5EEF1E45F50A005D439E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B5EED1E45F50A005D439E /* LaunchScreen.storyboard */; };
-		3A7B5F0B1E45F5E4005D439E /* MKCommonFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5EF71E45F5E4005D439E /* MKCommonFilters.swift */; };
-		3A7B5F0C1E45F5E4005D439E /* MKCropImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5EF81E45F5E4005D439E /* MKCropImage.swift */; };
-		3A7B5F0F1E45F5E4005D439E /* MKProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5EFB1E45F5E4005D439E /* MKProtocol.swift */; };
-		3A7B5F111E45F5E4005D439E /* MKFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5EFD1E45F5E4005D439E /* MKFilter.swift */; };
-		3A7B5F121E45F5E4005D439E /* MKFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5EFE1E45F5E4005D439E /* MKFilterCollectionViewCell.swift */; };
-		3A7B5F131E45F5E4005D439E /* MKFilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B5EFF1E45F5E4005D439E /* MKFilterCollectionViewCell.xib */; };
-		3A7B5F141E45F5E4005D439E /* MKFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5F001E45F5E4005D439E /* MKFiltersViewController.swift */; };
-		3A7B5F151E45F5E4005D439E /* MKFiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B5F011E45F5E4005D439E /* MKFiltersViewController.xib */; };
-		3A7B5F171E45F5E4005D439E /* MKImageExportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5F031E45F5E4005D439E /* MKImageExportController.swift */; };
-		3A7B5F1A1E45F5E4005D439E /* MKMultipleEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5F061E45F5E4005D439E /* MKMultipleEffects.swift */; };
-		3A7B5F1B1E45F5E4005D439E /* MKResizeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5F071E45F5E4005D439E /* MKResizeImage.swift */; };
-		3A7B5F1C1E45F5E4005D439E /* MKTrimVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5F081E45F5E4005D439E /* MKTrimVideo.swift */; };
-		3A7B5F1D1E45F5E4005D439E /* MKTrimVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5F091E45F5E4005D439E /* MKTrimVideoViewController.swift */; };
-		3A7B5F1E1E45F5E4005D439E /* MKTrimVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B5F0A1E45F5E4005D439E /* MKTrimVideoViewController.xib */; };
 		3A7B5F221E45F602005D439E /* CropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5F1F1E45F602005D439E /* CropViewController.swift */; };
 		3A7B5F231E45F602005D439E /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5F201E45F602005D439E /* FiltersViewController.swift */; };
-		3A7B5F241E45F602005D439E /* TrimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5F211E45F602005D439E /* TrimViewController.swift */; };
 		3A7B5F271E45F613005D439E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B5F251E45F613005D439E /* Main.storyboard */; };
 		3AA615C51E461C990031394B /* MediaKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3AA615C41E461C990031394B /* MediaKit.podspec */; };
 /* End PBXBuildFile section */
@@ -47,28 +35,16 @@
 		3A01E49D1E46453B00D1BD8F /* UIImage+Crop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Crop.swift"; sourceTree = "<group>"; };
 		3A01E4A61E4647BC00D1BD8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A03D1301E4C61E500595348 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3A2A1B1A1E4DDABB007660AC /* MKFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKFilter.swift; sourceTree = "<group>"; };
+		3A2A1B1C1E4DDAD1007660AC /* MKFilteredImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKFilteredImageView.swift; sourceTree = "<group>"; };
+		3A2A1B1E1E4DDAF9007660AC /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		3A7B5EE11E45F50A005D439E /* MediaKit Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MediaKit Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7B5EE41E45F50A005D439E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A7B5EEB1E45F50A005D439E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A7B5EEE1E45F50A005D439E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A7B5EF01E45F50A005D439E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A7B5EF71E45F5E4005D439E /* MKCommonFilters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKCommonFilters.swift; sourceTree = "<group>"; };
-		3A7B5EF81E45F5E4005D439E /* MKCropImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKCropImage.swift; sourceTree = "<group>"; };
-		3A7B5EFB1E45F5E4005D439E /* MKProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKProtocol.swift; sourceTree = "<group>"; };
-		3A7B5EFD1E45F5E4005D439E /* MKFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKFilter.swift; sourceTree = "<group>"; };
-		3A7B5EFE1E45F5E4005D439E /* MKFilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKFilterCollectionViewCell.swift; sourceTree = "<group>"; };
-		3A7B5EFF1E45F5E4005D439E /* MKFilterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MKFilterCollectionViewCell.xib; sourceTree = "<group>"; };
-		3A7B5F001E45F5E4005D439E /* MKFiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKFiltersViewController.swift; sourceTree = "<group>"; };
-		3A7B5F011E45F5E4005D439E /* MKFiltersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MKFiltersViewController.xib; sourceTree = "<group>"; };
-		3A7B5F031E45F5E4005D439E /* MKImageExportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKImageExportController.swift; sourceTree = "<group>"; };
-		3A7B5F061E45F5E4005D439E /* MKMultipleEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMultipleEffects.swift; sourceTree = "<group>"; };
-		3A7B5F071E45F5E4005D439E /* MKResizeImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKResizeImage.swift; sourceTree = "<group>"; };
-		3A7B5F081E45F5E4005D439E /* MKTrimVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTrimVideo.swift; sourceTree = "<group>"; };
-		3A7B5F091E45F5E4005D439E /* MKTrimVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTrimVideoViewController.swift; sourceTree = "<group>"; };
-		3A7B5F0A1E45F5E4005D439E /* MKTrimVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MKTrimVideoViewController.xib; sourceTree = "<group>"; };
 		3A7B5F1F1E45F602005D439E /* CropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropViewController.swift; sourceTree = "<group>"; };
 		3A7B5F201E45F602005D439E /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
-		3A7B5F211E45F602005D439E /* TrimViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrimViewController.swift; sourceTree = "<group>"; };
 		3A7B5F261E45F613005D439E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3AA615C41E461C990031394B /* MediaKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MediaKit.podspec; path = ../MediaKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C7D0779DAC13C4F18D6CFFFA /* Pods-MediaKit Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediaKit Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MediaKit Example/Pods-MediaKit Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -87,51 +63,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3A01E4A81E464C1000D1BD8F /* MKCropViewController */ = {
+		3A2A1B201E4DDB00007660AC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				3A01E4981E46453B00D1BD8F /* MKCropViewController.swift */,
-				3A01E49C1E46453B00D1BD8F /* MKResizeControl.swift */,
-				3A01E4961E46453B00D1BD8F /* MKCropRectView.swift */,
-				3A01E4971E46453B00D1BD8F /* MKCropView.swift */,
 				3A01E49D1E46453B00D1BD8F /* UIImage+Crop.swift */,
+				3A2A1B1E1E4DDAF9007660AC /* UIImage+Resize.swift */,
 			);
-			name = MKCropViewController;
-			sourceTree = "<group>";
-		};
-		3A01E4A91E464C3000D1BD8F /* MKProtocol */ = {
-			isa = PBXGroup;
-			children = (
-				3A7B5EFB1E45F5E4005D439E /* MKProtocol.swift */,
-				3A7B5EFD1E45F5E4005D439E /* MKFilter.swift */,
-				3A7B5EF71E45F5E4005D439E /* MKCommonFilters.swift */,
-				3A7B5EF81E45F5E4005D439E /* MKCropImage.swift */,
-				3A7B5F071E45F5E4005D439E /* MKResizeImage.swift */,
-				3A7B5F081E45F5E4005D439E /* MKTrimVideo.swift */,
-				3A7B5F061E45F5E4005D439E /* MKMultipleEffects.swift */,
-			);
-			name = MKProtocol;
-			sourceTree = "<group>";
-		};
-		3A01E4AA1E464D9000D1BD8F /* MKFiltersViewController */ = {
-			isa = PBXGroup;
-			children = (
-				3A7B5F031E45F5E4005D439E /* MKImageExportController.swift */,
-				3A7B5F001E45F5E4005D439E /* MKFiltersViewController.swift */,
-				3A7B5F011E45F5E4005D439E /* MKFiltersViewController.xib */,
-				3A7B5EFE1E45F5E4005D439E /* MKFilterCollectionViewCell.swift */,
-				3A7B5EFF1E45F5E4005D439E /* MKFilterCollectionViewCell.xib */,
-			);
-			name = MKFiltersViewController;
-			sourceTree = "<group>";
-		};
-		3A01E4AB1E464D9800D1BD8F /* MKTrimVideoViewController */ = {
-			isa = PBXGroup;
-			children = (
-				3A7B5F091E45F5E4005D439E /* MKTrimVideoViewController.swift */,
-				3A7B5F0A1E45F5E4005D439E /* MKTrimVideoViewController.xib */,
-			);
-			name = MKTrimVideoViewController;
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		3A7B5ED81E45F509005D439E = {
@@ -159,7 +97,6 @@
 				3A7B5F251E45F613005D439E /* Main.storyboard */,
 				3A7B5F201E45F602005D439E /* FiltersViewController.swift */,
 				3A7B5F1F1E45F602005D439E /* CropViewController.swift */,
-				3A7B5F211E45F602005D439E /* TrimViewController.swift */,
 				3A7B5F281E45F62A005D439E /* Supporting Files */,
 			);
 			path = "MediaKit Example";
@@ -169,10 +106,13 @@
 			isa = PBXGroup;
 			children = (
 				3AA615C41E461C990031394B /* MediaKit.podspec */,
-				3A01E4AA1E464D9000D1BD8F /* MKFiltersViewController */,
-				3A01E4A81E464C1000D1BD8F /* MKCropViewController */,
-				3A01E4AB1E464D9800D1BD8F /* MKTrimVideoViewController */,
-				3A01E4A91E464C3000D1BD8F /* MKProtocol */,
+				3A01E4981E46453B00D1BD8F /* MKCropViewController.swift */,
+				3A01E4961E46453B00D1BD8F /* MKCropRectView.swift */,
+				3A01E49C1E46453B00D1BD8F /* MKResizeControl.swift */,
+				3A01E4971E46453B00D1BD8F /* MKCropView.swift */,
+				3A2A1B1C1E4DDAD1007660AC /* MKFilteredImageView.swift */,
+				3A2A1B1A1E4DDABB007660AC /* MKFilter.swift */,
+				3A2A1B201E4DDB00007660AC /* Helpers */,
 				3A01E4A61E4647BC00D1BD8F /* Assets.xcassets */,
 			);
 			name = MediaKit;
@@ -272,11 +212,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A7B5F271E45F613005D439E /* Main.storyboard in Resources */,
-				3A7B5F151E45F5E4005D439E /* MKFiltersViewController.xib in Resources */,
-				3A7B5F1E1E45F5E4005D439E /* MKTrimVideoViewController.xib in Resources */,
 				3AA615C51E461C990031394B /* MediaKit.podspec in Resources */,
 				3A7B5EEF1E45F50A005D439E /* LaunchScreen.storyboard in Resources */,
-				3A7B5F131E45F5E4005D439E /* MKFilterCollectionViewCell.xib in Resources */,
 				3A01E4A71E4647BC00D1BD8F /* Assets.xcassets in Resources */,
 				3A7B5EEC1E45F50A005D439E /* Assets.xcassets in Resources */,
 			);
@@ -337,26 +274,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A7B5F1D1E45F5E4005D439E /* MKTrimVideoViewController.swift in Sources */,
 				3A01E4A41E46453C00D1BD8F /* MKResizeControl.swift in Sources */,
+				3A2A1B1D1E4DDAD1007660AC /* MKFilteredImageView.swift in Sources */,
 				3A01E49E1E46453B00D1BD8F /* MKCropRectView.swift in Sources */,
-				3A7B5F241E45F602005D439E /* TrimViewController.swift in Sources */,
 				3A01E49F1E46453B00D1BD8F /* MKCropView.swift in Sources */,
-				3A7B5F0F1E45F5E4005D439E /* MKProtocol.swift in Sources */,
+				3A2A1B1F1E4DDAF9007660AC /* UIImage+Resize.swift in Sources */,
 				3A01E4A51E46453C00D1BD8F /* UIImage+Crop.swift in Sources */,
-				3A7B5F171E45F5E4005D439E /* MKImageExportController.swift in Sources */,
-				3A7B5F141E45F5E4005D439E /* MKFiltersViewController.swift in Sources */,
 				3A7B5F231E45F602005D439E /* FiltersViewController.swift in Sources */,
-				3A7B5F0B1E45F5E4005D439E /* MKCommonFilters.swift in Sources */,
 				3A7B5F221E45F602005D439E /* CropViewController.swift in Sources */,
-				3A7B5F121E45F5E4005D439E /* MKFilterCollectionViewCell.swift in Sources */,
 				3A7B5EE51E45F50A005D439E /* AppDelegate.swift in Sources */,
-				3A7B5F1B1E45F5E4005D439E /* MKResizeImage.swift in Sources */,
-				3A7B5F1C1E45F5E4005D439E /* MKTrimVideo.swift in Sources */,
-				3A7B5F1A1E45F5E4005D439E /* MKMultipleEffects.swift in Sources */,
-				3A7B5F0C1E45F5E4005D439E /* MKCropImage.swift in Sources */,
-				3A7B5F111E45F5E4005D439E /* MKFilter.swift in Sources */,
 				3A01E4A01E46453B00D1BD8F /* MKCropViewController.swift in Sources */,
+				3A2A1B1B1E4DDABB007660AC /* MKFilter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

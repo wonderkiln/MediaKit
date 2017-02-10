@@ -1,7 +1,5 @@
 PODS:
-  - MARKRangeSlider (1.1.1)
-  - MediaKit (0.0.6):
-    - MARKRangeSlider (~> 1.1)
+  - MediaKit (0.0.7)
 
 DEPENDENCIES:
   - MediaKit (from `..`)
@@ -11,8 +9,7 @@ EXTERNAL SOURCES:
     :path: ..
 
 SPEC CHECKSUMS:
-  MARKRangeSlider: ef7e1fe84d22996f47fd72dcb8de50b9410aac47
-  MediaKit: 407155c3036360810d7520d3eeca8ac7d4030d4d
+  MediaKit: 1acd5a397c923c7d722705ad11b6a231fab6b9dc
 
 PODFILE CHECKSUM: dbfdbf9bbcba75b0e9009e93eb6eb67dbd4083e9
 

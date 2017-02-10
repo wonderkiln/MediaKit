@@ -11,23 +11,22 @@ import MediaKit
 
 class CropViewController: UIViewController {
     
-    var cropViewController: MKCropViewController!
+    private var cropViewController: MKCropViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let cropViewController = MKCropViewController()
         cropViewController.view.frame = view.bounds
+        cropViewController.view.frame.size.height -= 64
         view.addSubview(cropViewController.view)
         self.addChildViewController(cropViewController)
         cropViewController.didMove(toParentViewController: self)
         cropViewController.image = #imageLiteral(resourceName: "Picture")
         self.cropViewController = cropViewController
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Crop", style: .plain, target: self, action: #selector(didTapCropButton))
     }
     
-    func didTapCropButton() {
+    @IBAction func didTapCropButton(_ sender: UIBarButtonItem) {
         if let image = cropViewController.cropView?.croppedImage {
             cropViewController.image = image
         }

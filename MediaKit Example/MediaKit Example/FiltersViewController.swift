@@ -7,179 +7,10 @@
 //
 
 import UIKit
-import CoreImage
-import GLKit
-import OpenGLES
-
-public struct FilterProperty {
-    
-    public var displayName: String
-    public var propertyKey: String
-    public var minimum: Float = 0
-    public var maximum: Float = 1
-    public var value: Float = 0.5
-    
-    public init(name: String, key: String, value: Float, minimum: Float, maximum: Float) {
-        self.displayName = name
-        self.propertyKey = key
-        self.value = value
-        self.minimum = minimum
-        self.maximum = maximum
-    }
-}
-
-public protocol FilterPropertyDelegate: class {
-    func filterPropertyDidChange(_ property: FilterProperty)
-}
-
-public struct Filter {
-    
-    public var displayName: String
-    public var filter: CIFilter
-    
-    public init(name: String, filterName: String) {
-        self.filter = CIFilter(name: filterName)!
-        self.displayName = name
-    }
-    
-    public var properties: [FilterProperty] {
-        let inputNames = filter.inputKeys.filter { parameterName -> Bool in
-            return parameterName != "inputImage"
-        }
-        
-        let attributes = filter.attributes
-        
-        return inputNames.flatMap { inputName -> FilterProperty? in
-            let attribute = attributes[inputName] as! [String: Any]
-            
-            guard let minValue = attribute[kCIAttributeSliderMin] as? Float,
-                let maxValue = attribute[kCIAttributeSliderMax] as? Float,
-                let defaultValue = attribute[kCIAttributeDefault] as? Float else {
-                    return nil
-            }
-            
-            let name = inputName.substring(from: inputName.index(inputName.startIndex, offsetBy: 5))
-            return FilterProperty(name: name, key: inputName, value: defaultValue, minimum: minValue, maximum: maxValue)
-        }
-    }
-}
-
-class FilteredImageView: GLKView, FilterPropertyDelegate {
-    
-    var filter: CIFilter? {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-    
-    var inputImage: UIImage? {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-    
-    private var ciContext: CIContext!
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-    
-    open func commonInit() {
-        clipsToBounds = true
-        enableSetNeedsDisplay = true
-        context = EAGLContext(api: .openGLES3)
-        ciContext = CIContext(eaglContext: context)
-    }
-    
-    override func draw(_ rect: CGRect) {
-        if let inputImage = inputImage, let filter = filter, let inputCIImage = CIImage(image: inputImage) {
-            filter.setValue(inputCIImage, forKey: kCIInputImageKey)
-            
-            if let outputImage = filter.outputImage {
-                clearBackground()
-                
-                let inputBounds = inputCIImage.extent
-                let drawableBounds = CGRect(x: 0, y: 0, width: self.drawableWidth, height: self.drawableHeight)
-                let targetBounds = imageBoundsForContentMode(fromRect: inputBounds, toRect: drawableBounds)
-                ciContext.draw(outputImage, in: targetBounds, from: inputBounds)
-            }
-        }
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setNeedsDisplay()
-    }
-    
-    private func clearBackground() {
-        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
-        backgroundColor?.getRed(&r, green: &g, blue: &b, alpha: &a)
-        glClearColor(GLfloat(r), GLfloat(g), GLfloat(b), GLfloat(a))
-        glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
-    }
-    
-    private func aspectFit(fromRect: CGRect, toRect: CGRect) -> CGRect {
-        let fromAspectRatio = fromRect.size.width / fromRect.size.height
-        let toAspectRatio = toRect.size.width / toRect.size.height
-        
-        var fitRect = toRect
-        
-        if (fromAspectRatio > toAspectRatio) {
-            fitRect.size.height = toRect.size.width / fromAspectRatio
-            fitRect.origin.y += (toRect.size.height - fitRect.size.height) * 0.5
-        } else {
-            fitRect.size.width = toRect.size.height  * fromAspectRatio
-            fitRect.origin.x += (toRect.size.width - fitRect.size.width) * 0.5
-        }
-        
-        return fitRect.integral
-    }
-    
-    private func aspectFill(fromRect: CGRect, toRect: CGRect) -> CGRect {
-        let fromAspectRatio = fromRect.size.width / fromRect.size.height
-        let toAspectRatio = toRect.size.width / toRect.size.height
-        
-        var fitRect = toRect
-        
-        if (fromAspectRatio > toAspectRatio) {
-            fitRect.size.width = toRect.size.height  * fromAspectRatio
-            fitRect.origin.x += (toRect.size.width - fitRect.size.width) * 0.5
-        } else {
-            fitRect.size.height = toRect.size.width / fromAspectRatio
-            fitRect.origin.y += (toRect.size.height - fitRect.size.height) * 0.5
-        }
-        
-        return fitRect.integral
-    }
-    
-    private func imageBoundsForContentMode(fromRect: CGRect, toRect: CGRect) -> CGRect {
-        switch contentMode {
-        case .scaleAspectFill:
-            return aspectFill(fromRect: fromRect, toRect: toRect)
-        case .scaleAspectFit:
-            return aspectFit(fromRect: fromRect, toRect: toRect)
-        default:
-            return fromRect
-        }
-    }
-    
-    func filterPropertyDidChange(_ property: FilterProperty) {
-        if let filter = filter {
-            filter.setValue(property.value, forKey: property.propertyKey)
-            setNeedsDisplay()
-        }
-    }
-}
 
 class FiltersViewController: UIViewController {
 
-    @IBOutlet weak var filteredImageView: FilteredImageView!
+    @IBOutlet weak var filteredImageView: MKFilteredImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var adjustView: UIView! {
@@ -188,21 +19,21 @@ class FiltersViewController: UIViewController {
         }
     }
     
-    fileprivate let filters: [Filter] = [
-        Filter(name: "Chrome", filterName: "CIPhotoEffectChrome"),
-        Filter(name: "Fade", filterName: "CIPhotoEffectFade"),
-        Filter(name: "Instant", filterName: "CIPhotoEffectInstant"),
-        Filter(name: "Mono", filterName: "CIPhotoEffectMono"),
-        Filter(name: "Process", filterName: "CIPhotoEffectProcess"),
-        Filter(name: "Sepia", filterName: "CISepiaTone"),
-        Filter(name: "Vignette", filterName: "CIVignette"),
-        Filter(name: "Photo Transfer", filterName: "CIPhotoEffectTransfer"),
-        Filter(name: "Tonal", filterName: "CIPhotoEffectTonal"),
-        Filter(name: "Invert", filterName: "CIColorInvert"),
-        Filter(name: "Vibrance", filterName: "CIVibrance"),
+    fileprivate let filters: [MKFilter] = [
+        MKFilter(name: "Chrome", filterName: "CIPhotoEffectChrome"),
+        MKFilter(name: "Fade", filterName: "CIPhotoEffectFade"),
+        MKFilter(name: "Instant", filterName: "CIPhotoEffectInstant"),
+        MKFilter(name: "Mono", filterName: "CIPhotoEffectMono"),
+        MKFilter(name: "Process", filterName: "CIPhotoEffectProcess"),
+        MKFilter(name: "Sepia", filterName: "CISepiaTone"),
+        MKFilter(name: "Vignette", filterName: "CIVignette"),
+        MKFilter(name: "Photo Transfer", filterName: "CIPhotoEffectTransfer"),
+        MKFilter(name: "Tonal", filterName: "CIPhotoEffectTonal"),
+        MKFilter(name: "Invert", filterName: "CIColorInvert"),
+        MKFilter(name: "Vibrance", filterName: "CIVibrance"),
     ]
     
-    fileprivate var filterProperties: [FilterProperty] = [] {
+    fileprivate var filterProperties: [MKFilterProperty] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -214,11 +45,18 @@ class FiltersViewController: UIViewController {
             
             if let filterImage = filterImage, let image = CIImage(image: filterImage) {
                 DispatchQueue.global(qos: .background).async {
-                    self.filters.enumerated().forEach { (index, filter) in
+                    self.filters.enumerated().forEach { [unowned self] (index, filter) in
                         filter.filter.setValue(image, forKey: kCIInputImageKey)
                         if let image = filter.filter.outputImage {
                             let finalImage = UIImage(ciImage: image)
                             self.filteredImages[index] = finalImage
+                            
+                            DispatchQueue.main.async {
+                                let indexPath = IndexPath(row: index, section: 0)
+                                if let cell = self.collectionView.cellForItem(at: indexPath) as? FilterCollectionViewCell {
+                                    cell.imageView.image = finalImage
+                                }
+                            }
                         }
                     }
                 }
@@ -234,7 +72,7 @@ class FiltersViewController: UIViewController {
         super.viewDidLoad()
         
         filteredImageView.inputImage = #imageLiteral(resourceName: "Picture")
-        filterImage = ImageResizer(size: CGSize(width: 100, height: 100), fill: true).apply(for: #imageLiteral(resourceName: "Picture"))
+        filterImage = #imageLiteral(resourceName: "Picture").resize(aspectFill: CGSize(width: 100, height: 100))
     }
     
     @IBAction func didTapAdjustButton(_ sender: UIBarButtonItem) {
@@ -247,14 +85,26 @@ class FilterCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
 }
 
+public protocol MKFilterPropertyDelegate: class {
+    func filterPropertyDidChange(_ property: MKFilterProperty)
+}
+
+extension MKFilteredImageView: MKFilterPropertyDelegate {
+    
+    public func filterPropertyDidChange(_ property: MKFilterProperty) {
+        self.filter?.setValue(property.value, forKey: property.propertyKey)
+        self.setNeedsDisplay()
+    }
+}
+
 class FilterPropertyTablesViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var valueSlider: UISlider!
     
-    weak var delegate: FilterPropertyDelegate?
+    weak var delegate: MKFilterPropertyDelegate?
     
-    var property: FilterProperty? {
+    var property: MKFilterProperty? {
         didSet {
             if let property = property {
                 titleLabel.text = property.displayName
@@ -290,71 +140,6 @@ extension FiltersViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-public protocol Bla {
-    func apply(for image: UIImage) -> UIImage?
-}
-
-public struct ImageResizer: Bla {
-    
-    public var size: CGSize
-    public var fill: Bool
-    
-    public init(size: CGSize, fill: Bool) {
-        self.size = size
-        self.fill = fill
-    }
-    
-    public func apply(for image: UIImage) -> UIImage? {
-        let scale = UIScreen.main.scale
-        let fromRect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
-        let toRect = CGRect(x: 0, y: 0, width: size.width * scale, height: size.height * scale)
-        
-        let rect = fill ? aspectFill(fromRect: fromRect, toRect: toRect) : aspectFit(fromRect: fromRect, toRect: toRect)
-        
-        UIGraphicsBeginImageContextWithOptions(toRect.size, false, scale)
-        image.draw(in: rect)
-        
-        let finalImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return finalImage
-    }
-    
-    private func aspectFit(fromRect: CGRect, toRect: CGRect) -> CGRect {
-        let fromAspectRatio = fromRect.size.width / fromRect.size.height
-        let toAspectRatio = toRect.size.width / toRect.size.height
-        
-        var fitRect = toRect
-        
-        if (fromAspectRatio > toAspectRatio) {
-            fitRect.size.height = toRect.size.width / fromAspectRatio
-            fitRect.origin.y += (toRect.size.height - fitRect.size.height) * 0.5
-        } else {
-            fitRect.size.width = toRect.size.height  * fromAspectRatio
-            fitRect.origin.x += (toRect.size.width - fitRect.size.width) * 0.5
-        }
-        
-        return fitRect.integral
-    }
-    
-    private func aspectFill(fromRect: CGRect, toRect: CGRect) -> CGRect {
-        let fromAspectRatio = fromRect.size.width / fromRect.size.height
-        let toAspectRatio = toRect.size.width / toRect.size.height
-        
-        var fitRect = toRect
-        
-        if (fromAspectRatio > toAspectRatio) {
-            fitRect.size.width = toRect.size.height  * fromAspectRatio
-            fitRect.origin.x += (toRect.size.width - fitRect.size.width) * 0.5
-        } else {
-            fitRect.size.height = toRect.size.width / fromAspectRatio
-            fitRect.origin.y += (toRect.size.height - fitRect.size.height) * 0.5
-        }
-        
-        return fitRect.integral
-    }
-}
-
 extension FiltersViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -365,11 +150,7 @@ extension FiltersViewController: UICollectionViewDataSource, UICollectionViewDel
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterCollectionViewCell",
                                                       for: indexPath) as! FilterCollectionViewCell
         
-        if let filteredImage = filteredImages[indexPath.row] {
-            cell.imageView.image = filteredImage
-        } else {
-            cell.imageView.image = nil
-        }
+        cell.imageView.image = filteredImages[indexPath.row]
         
         return cell
     }

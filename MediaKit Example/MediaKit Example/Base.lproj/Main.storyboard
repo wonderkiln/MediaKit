@@ -21,17 +21,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <glkView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" enableSetNeedsDisplay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apr-dG-dc8" customClass="FilteredImageView" customModule="MediaKit_Example" customModuleProvider="target">
+                            <glkView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" enableSetNeedsDisplay="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apr-dG-dc8" customClass="MKFilteredImageView" customModule="MediaKit_Example" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                             </glkView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02L-Ix-Yj9">
-                                <rect key="frame" x="0.0" y="268" width="320" height="180"/>
+                                <rect key="frame" x="0.0" y="328" width="320" height="120"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fdu-MV-8FF">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OYD-fH-id5">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <prototypes>
                                                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FilterPropertyTablesViewCell" id="j0V-aW-5sR" customClass="FilterPropertyTablesViewCell" customModule="MediaKit_Example" customModuleProvider="target">
@@ -83,7 +83,7 @@
                                     </constraints>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="MpD-fC-dfb"/>
+                                    <constraint firstAttribute="height" constant="120" id="MpD-fC-dfb"/>
                                 </constraints>
                                 <blurEffect style="light"/>
                             </visualEffectView>
@@ -182,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-555" y="932.74647887323943"/>
+            <point key="canvasLocation" x="1493" y="92"/>
         </scene>
         <!--Crop-->
         <scene sceneID="s9W-pl-9ur">
@@ -193,36 +193,22 @@
                         <viewControllerLayoutGuide type="bottom" id="qq0-dX-gNa"/>
                     </layoutGuides>
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="nzi-SL-NYb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <navigationItem key="navigationItem" title="Crop" id="VPC-jv-8Oc"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" title="Crop" id="VPC-jv-8Oc">
+                        <barButtonItem key="rightBarButtonItem" title="Crop" id="OMh-uB-u5r">
+                            <connections>
+                                <action selector="didTapCropButton:" destination="6Da-H6-1EN" id="7n7-aa-FRB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bl5-Qk-o8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="933"/>
-        </scene>
-        <!--Trim-->
-        <scene sceneID="DRc-MV-72h">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="b4f-pt-ims" customClass="TrimViewController" customModule="MediaKit_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="DJh-6P-ltJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="2hw-1Z-RZF"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="RSu-Zg-z9W">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <navigationItem key="navigationItem" title="Trim" id="tIf-A9-5rP"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R7M-2n-Sh2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="829" y="933"/>
+            <point key="canvasLocation" x="2319" y="92"/>
         </scene>
         <!--MediaKit-->
         <scene sceneID="eLh-AM-V2C">
@@ -236,14 +222,14 @@
                             <tableViewSection headerTitle="Image" id="o3W-lR-UgZ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="4hG-P7-1ia" style="IBUITableViewCellStyleDefault" id="9go-LP-scd">
-                                        <rect key="frame" x="0.0" y="56" width="320" height="55"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="320" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9go-LP-scd" id="H7J-Kf-dTj">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="54"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="54.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Filters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4hG-P7-1ia">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="54"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="54.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                     <nil key="textColor"/>
@@ -257,14 +243,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="sAe-e3-qXj" style="IBUITableViewCellStyleDefault" id="Mc8-j2-CMb">
-                                        <rect key="frame" x="0.0" y="111" width="320" height="55"/>
+                                        <rect key="frame" x="0.0" y="110.5" width="320" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mc8-j2-CMb" id="Uuu-eL-VwW">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="54"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="54.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Crop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sAe-e3-qXj">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="54"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="54.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                     <nil key="textColor"/>
@@ -275,31 +261,6 @@
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <connections>
                                             <segue destination="6Da-H6-1EN" kind="show" id="EVz-k5-lKg"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Video" id="aNT-oW-dqk">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Wpx-S0-Nqj" style="IBUITableViewCellStyleDefault" id="Gvs-Gt-MCL">
-                                        <rect key="frame" x="0.0" y="223" width="320" height="55"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gvs-Gt-MCL" id="Ujp-Ey-O8F">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="54"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Trim" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wpx-S0-Nqj">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="54"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                        <connections>
-                                            <segue destination="b4f-pt-ims" kind="show" id="Ow9-6u-kDo"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
