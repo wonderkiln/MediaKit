@@ -33,7 +33,7 @@ open class MKCropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate
         }
     }
     open var croppedImage: UIImage? {
-        return image?.rotatedImageWithTransform(rotation, croppedToRect: zoomedCropRect())
+        return image?.crop(to: zoomedCropRect(), withRotation: rotation)
     }
     open var keepAspectRatio = false {
         didSet {
@@ -273,7 +273,7 @@ open class MKCropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate
     
     open func croppedImage(_ image: UIImage) -> UIImage {
         imageSize = image.size
-        return image.rotatedImageWithTransform(rotation, croppedToRect: zoomedCropRect())
+        return image.crop(to: zoomedCropRect(), withRotation: rotation)
     }
     
     func handleRotation(_ gestureRecognizer: UIRotationGestureRecognizer) {
