@@ -25,23 +25,7 @@ open class MKFilteredImageView: GLKView {
         }
     }
     
-    public var outputImage: UIImage? {
-        guard let inputImage = inputImage, let inputCIImage = CIImage(image: inputImage) else {
-            return nil
-        }
-        
-        guard let filter = filter else {
-            return nil
-        }
-        
-        filter.setValue(inputCIImage, forKey: kCIInputImageKey)
-        
-        guard let outputImage = filter.outputImage else {
-            return nil
-        }
-        
-        return UIImage(ciImage: outputImage)
-    }
+    public var outputImage: UIImage?
     
     private var ciContext: CIContext!
     
@@ -66,6 +50,7 @@ open class MKFilteredImageView: GLKView {
         clearBackground()
         
         guard let inputImage = inputImage, let inputCIImage = CIImage(image: inputImage) else {
+            self.outputImage = nil
             return
         }
         
@@ -84,6 +69,10 @@ open class MKFilteredImageView: GLKView {
         let drawableBounds = CGRect(x: 0, y: 0, width: self.drawableWidth, height: self.drawableHeight)
         let targetBounds = imageBoundsForContentMode(fromRect: inputBounds, toRect: drawableBounds)
         ciContext.draw(outputImage!, in: targetBounds, from: inputBounds)
+        
+        if let cgImage = ciContext.createCGImage(outputImage!, from: inputBounds) {
+            self.outputImage = UIImage(cgImage: cgImage)
+        }
     }
     
     override open func layoutSubviews() {
