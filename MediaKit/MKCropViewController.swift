@@ -54,7 +54,7 @@ open class MKCropViewController: UIViewController {
     open var zoomedCropRect: CGRect {
         return cropView!.zoomedCropRect()
     }
-
+    
     public var cropView: MKCropView?
     
     public required init?(coder aDecoder: NSCoder) {
@@ -81,7 +81,7 @@ open class MKCropViewController: UIViewController {
         cropView = MKCropView(frame: contentView.bounds)
         contentView.addSubview(cropView!)
     }
-
+    
     open override func viewDidLoad() {
         super.viewDidLoad()
         

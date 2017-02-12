@@ -109,7 +109,7 @@ class MKCropRectView: UIView, MKResizeControlDelegate {
             
             if showsGridMinor {
                 for j in 1 ..< 3 {
-                    UIColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 0.3).set()
+                    UIColor.orange.withAlphaComponent(0.3).set()
                     UIRectFill(CGRect(x: round((width / 9.0) * CGFloat(j) + (width / 3.0) * CGFloat(i)), y: borderPadding, width: 1.0, height: round(height) - borderPadding * 2.0))
                     UIRectFill(CGRect(x: borderPadding, y: round((height / 9.0) * CGFloat(j) + (height / 3.0) * CGFloat(i)), width: round(width) - borderPadding * 2.0, height: 1.0))
                 }
@@ -117,7 +117,7 @@ class MKCropRectView: UIView, MKResizeControlDelegate {
             
             if showsGridMajor {
                 if i > 0 {
-                    UIColor.white.withAlphaComponent(0.5).set()
+                    UIColor.white.withAlphaComponent(0.3).set()
                     UIRectFill(CGRect(x: round(CGFloat(i) * width / 3.0), y: borderPadding, width: 1.0, height: round(height) - borderPadding * 2.0))
                     UIRectFill(CGRect(x: borderPadding, y: round(CGFloat(i) * height / 3.0), width: round(width) - borderPadding * 2.0, height: 1.0))
                 }
@@ -152,7 +152,7 @@ class MKCropRectView: UIView, MKResizeControlDelegate {
         bottomEdgeView.enabled = enabled
         rightEdgeView.enabled = enabled
     }
-
+    
     // MARK: - MKResizeControl delegate methods
     func resizeControlDidBeginResizing(_ control: MKResizeControl) {
         initialRect = frame
@@ -300,7 +300,7 @@ class MKCropRectView: UIView, MKResizeControlDelegate {
         var height = frame.height
         
         if width < height {
-           height = width / fixedAspectRatio
+            height = width / fixedAspectRatio
         } else {
             height = width * fixedAspectRatio
         }

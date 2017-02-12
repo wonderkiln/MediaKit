@@ -49,7 +49,18 @@ open class MKFilteredImageView: GLKView {
     override open func draw(_ rect: CGRect) {
         clearBackground()
         
-        guard let inputImage = inputImage, let inputCIImage = CIImage(image: inputImage) else {
+        guard let inputImage = inputImage else {
+            self.outputImage = nil
+            return
+        }
+        
+        var rotation: CGFloat = 0
+        
+        if inputImage.imageOrientation == .right {
+            rotation = CGFloat(-.pi / 2.0)
+        }
+        
+        guard let inputCIImage = CIImage(image: inputImage)?.applying(CGAffineTransform(rotationAngle: rotation)) else {
             self.outputImage = nil
             return
         }

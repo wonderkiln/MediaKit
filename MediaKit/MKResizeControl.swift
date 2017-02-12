@@ -22,12 +22,12 @@ class MKResizeControl: UIView {
     var enabled = true
     
     fileprivate var startPoint = CGPoint.zero
-
+    
     override init(frame: CGRect) {
         super.init(frame: CGRect(x: frame.origin.x, y: frame.origin.y, width: 44.0, height: 44.0))
         initialize()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(frame: CGRect(x: 0, y: 0, width: 44.0, height: 44.0))
         initialize()
