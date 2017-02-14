@@ -68,13 +68,13 @@ public class MKLibraryUtils {
         }
     }
     
-    public static func thumbnail(for asset: PHAsset, with size: CGSize = CGSize(width: 100, height: 100), completion: @escaping (UIImage?) -> Void) {
+    public static func thumbnail(for asset: PHAsset, with size: CGSize, completion: @escaping (UIImage?) -> Void) {
         let scale = UIScreen.main.scale
         let size = CGSize(width: size.width * scale, height: size.height * scale)
         
         let options = PHImageRequestOptions()
         options.isSynchronous = false
-        options.deliveryMode = .fastFormat
+        options.deliveryMode = .highQualityFormat
         options.resizeMode = .fast
         
         PHImageManager.default().requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: options, resultHandler: { (image, _) in
