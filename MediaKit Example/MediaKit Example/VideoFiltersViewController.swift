@@ -106,41 +106,24 @@ class VideoFiltersViewController: UIViewController {
         MKFilter(name: "Tonal", filterName: "CIPhotoEffectTonal"),
         MKFilter(name: "Invert", filterName: "CIColorInvert"),
         MKFilter(name: "Vibrance", filterName: "CIVibrance"),
+        MKFilter(name: "Kaleidoscope", filterName: "CIKaleidoscope"),
+        MKFilter(name: "Tile", filterName: "CIOpTile"),
     ]
     
     fileprivate var index = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let picker = UIImagePickerController()
-        picker.sourceType = .photoLibrary
-        picker.mediaTypes = [kUTTypeMovie as String]
-        picker.delegate = self
-        present(picker, animated: true, completion: nil)
+        
+        if let url = Bundle.main.url(forResource: "Video", withExtension: "mp4") {
+            videoPlayer.asset = AVAsset(url: url)
+            videoPlayer.player?.isMuted = true
+            videoPlayer.play(loop: true)
+        }
     }
     
     @IBAction func didTap() {
         videoPlayer.filter = filters[index].filter
         index = (index + 1) % filters.count
-    }
-}
-
-extension VideoFiltersViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        picker.dismiss(animated: true, completion: nil)
-        
-        guard let url = info[UIImagePickerControllerReferenceURL] as? URL else {
-            return
-        }
-        
-        videoPlayer.asset = AVAsset(url: url)
-        videoPlayer.player?.isMuted = true
-        videoPlayer.play(loop: true)
     }
 }
