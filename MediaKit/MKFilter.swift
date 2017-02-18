@@ -28,14 +28,20 @@ public struct MKFilterProperty {
 public struct MKFilter {
     
     public var displayName: String
-    public var filter: CIFilter
+    public var filter: CIFilter?
     
-    public init(name: String, filterName: String) {
-        self.filter = CIFilter(name: filterName)!
+    public init(name: String, filterName: String?) {
+        if let filterName = filterName {
+            self.filter = CIFilter(name: filterName)
+        }
         self.displayName = name
     }
     
     public var properties: [MKFilterProperty] {
+        guard let filter = filter else {
+            return []
+        }
+        
         let inputNames = filter.inputKeys.filter { parameterName -> Bool in
             return parameterName != "inputImage"
         }

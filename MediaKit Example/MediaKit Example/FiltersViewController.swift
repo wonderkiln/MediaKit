@@ -9,7 +9,7 @@
 import UIKit
 
 class FiltersViewController: UIViewController {
-
+    
     @IBOutlet weak var filteredImageView: MKFilteredImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -20,6 +20,7 @@ class FiltersViewController: UIViewController {
     }
     
     fileprivate let filters: [MKFilter] = [
+        MKFilter(name: "None", filterName: nil),
         MKFilter(name: "Chrome", filterName: "CIPhotoEffectChrome"),
         MKFilter(name: "Fade", filterName: "CIPhotoEffectFade"),
         MKFilter(name: "Instant", filterName: "CIPhotoEffectInstant"),
@@ -39,40 +40,51 @@ class FiltersViewController: UIViewController {
         }
     }
     
-    fileprivate var filterImage: UIImage? {
+    fileprivate var thumbnails: [UIImage?] = [] {
         didSet {
-            filteredImages = Array(repeating: nil, count: filters.count)
-            
-            if let filterImage = filterImage, let image = CIImage(image: filterImage) {
-                DispatchQueue.global(qos: .background).async {
-                    self.filters.enumerated().forEach { [unowned self] (index, filter) in
-                        filter.filter.setValue(image, forKey: kCIInputImageKey)
-                        if let image = filter.filter.outputImage {
-                            let finalImage = UIImage(ciImage: image)
-                            self.filteredImages[index] = finalImage
-                            
-                            DispatchQueue.main.async {
-                                let indexPath = IndexPath(row: index, section: 0)
-                                if let cell = self.collectionView.cellForItem(at: indexPath) as? FilterCollectionViewCell {
-                                    cell.imageView.image = finalImage
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            
             collectionView.reloadData()
         }
     }
-    
-    fileprivate var filteredImages: [UIImage?] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         filteredImageView.inputImage = #imageLiteral(resourceName: "Picture")
-        filterImage = #imageLiteral(resourceName: "Picture").resize(aspectFill: CGSize(width: 100, height: 100))
+        generateThumbnails(#imageLiteral(resourceName: "Picture"))
+    }
+    
+    private func generateThumbnails(_ image: UIImage) {
+        thumbnails = Array(repeating: nil, count: filters.count)
+        
+        DispatchQueue.global(qos: .default).async {
+            guard let resizedImage = image.resize(aspectFill: CGSize(width: 100, height: 100)) else {
+                return
+            }
+            guard let ciImage = CIImage(image: resizedImage) else {
+                return
+            }
+            
+            self.filters.enumerated().forEach { (index, element) in
+                var finalImage = resizedImage
+                
+                if let filter = element.filter {
+                    filter.setValue(ciImage, forKey: kCIInputImageKey)
+                    if let outputImage = filter.outputImage {
+                        let rect = outputImage.extent
+                        if let cgImage = CIContext().createCGImage(outputImage, from: rect) {
+                            finalImage = UIImage(cgImage: cgImage)
+                        }
+                    }
+                }
+                
+                DispatchQueue.main.async {
+                    self.thumbnails[index] = finalImage
+                    if let cell = self.collectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? FilterCollectionViewCell {
+                        cell.imageView.image = finalImage
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func didTapAdjustButton(_ sender: UIBarButtonItem) {
@@ -143,21 +155,21 @@ extension FiltersViewController: UITableViewDataSource, UITableViewDelegate {
 extension FiltersViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filters.count
+        return thumbnails.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterCollectionViewCell",
                                                       for: indexPath) as! FilterCollectionViewCell
         
-        cell.imageView.image = filteredImages[indexPath.row]
+        cell.imageView.image = thumbnails[indexPath.row]
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let filter = filters[indexPath.row]
-        filteredImageView.filter = filter.filter
-        filterProperties = filter.properties
+        let element = filters[indexPath.row]
+        filteredImageView.filter = element.filter
+        filterProperties = element.properties
     }
 }
