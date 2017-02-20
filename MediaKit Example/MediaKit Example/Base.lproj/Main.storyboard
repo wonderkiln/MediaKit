@@ -222,7 +222,7 @@
                             <tableViewSection headerTitle="Image" id="o3W-lR-UgZ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="4hG-P7-1ia" style="IBUITableViewCellStyleDefault" id="9go-LP-scd">
-                                        <rect key="frame" x="0.0" y="55.5" width="320" height="55"/>
+                                        <rect key="frame" x="0.0" y="56" width="320" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9go-LP-scd" id="H7J-Kf-dTj">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="54.5"/>
@@ -243,7 +243,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="sAe-e3-qXj" style="IBUITableViewCellStyleDefault" id="Mc8-j2-CMb">
-                                        <rect key="frame" x="0.0" y="110.5" width="320" height="55"/>
+                                        <rect key="frame" x="0.0" y="111" width="320" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mc8-j2-CMb" id="Uuu-eL-VwW">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="54.5"/>
@@ -261,6 +261,31 @@
                                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <connections>
                                             <segue destination="6Da-H6-1EN" kind="show" id="EVz-k5-lKg"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Video" id="jCp-2E-DLF">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="67o-Rz-bFc" style="IBUITableViewCellStyleDefault" id="81h-2i-FG1">
+                                        <rect key="frame" x="0.0" y="222" width="320" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="81h-2i-FG1" id="gml-mX-xqo">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="54.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Filters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="67o-Rz-bFc">
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="54.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <connections>
+                                            <segue destination="JVN-6z-Pjj" kind="show" id="Uvf-qV-6PS"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -294,6 +319,108 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gA-Wu-hPx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-554.39999999999998" y="92.203898050974516"/>
+        </scene>
+        <!--Filters-->
+        <scene sceneID="BcX-kf-wmG">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="JVN-6z-Pjj" customClass="VideoFiltersViewController" customModule="MediaKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AgS-Qx-FR2"/>
+                        <viewControllerLayoutGuide type="bottom" id="Eyh-SC-Ffi"/>
+                    </layoutGuides>
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="7kV-VE-aAR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLS-VC-PmT" customClass="MKFilteredVideoPlayer" customModule="MediaKit_Example" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            </view>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3t2-1P-y6w">
+                                <rect key="frame" x="0.0" y="448" width="320" height="120"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wjt-ko-qMU">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iyk-yU-Wlt">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Adx-69-9BA">
+                                                <size key="itemSize" width="100" height="100"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                            </collectionViewFlowLayout>
+                                            <cells>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilterCollectionViewCell" id="bEB-QF-JHl" customClass="FilterCollectionViewCell" customModule="MediaKit_Example" customModuleProvider="target">
+                                                    <rect key="frame" x="10" y="10" width="100" height="100"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DUd-LA-Iw3">
+                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </imageView>
+                                                        </subviews>
+                                                    </view>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="DUd-LA-Iw3" secondAttribute="bottom" id="GJi-Jp-f0v"/>
+                                                        <constraint firstAttribute="trailing" secondItem="DUd-LA-Iw3" secondAttribute="trailing" id="H3e-BN-dkt"/>
+                                                        <constraint firstItem="DUd-LA-Iw3" firstAttribute="top" secondItem="bEB-QF-JHl" secondAttribute="top" id="uqI-C0-W1g"/>
+                                                        <constraint firstItem="DUd-LA-Iw3" firstAttribute="leading" secondItem="bEB-QF-JHl" secondAttribute="leading" id="zyf-mG-lFd"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="imageView" destination="DUd-LA-Iw3" id="pDm-L2-Xoa"/>
+                                                    </connections>
+                                                </collectionViewCell>
+                                            </cells>
+                                            <connections>
+                                                <outlet property="dataSource" destination="JVN-6z-Pjj" id="lTy-4Z-TZo"/>
+                                                <outlet property="delegate" destination="JVN-6z-Pjj" id="oqy-m8-s94"/>
+                                            </connections>
+                                        </collectionView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Iyk-yU-Wlt" firstAttribute="top" secondItem="wjt-ko-qMU" secondAttribute="top" id="S1c-I7-6LB"/>
+                                        <constraint firstItem="Iyk-yU-Wlt" firstAttribute="leading" secondItem="wjt-ko-qMU" secondAttribute="leading" id="duo-nD-cyO"/>
+                                        <constraint firstAttribute="bottom" secondItem="Iyk-yU-Wlt" secondAttribute="bottom" id="iOV-R8-DsB"/>
+                                        <constraint firstAttribute="trailing" secondItem="Iyk-yU-Wlt" secondAttribute="trailing" id="rKf-EW-mPe"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="bb7-uZ-hRy"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="3t2-1P-y6w" secondAttribute="trailing" id="6Xf-Gj-1VA"/>
+                            <constraint firstItem="3t2-1P-y6w" firstAttribute="leading" secondItem="7kV-VE-aAR" secondAttribute="leading" id="Dcl-0Z-2Uy"/>
+                            <constraint firstItem="Eyh-SC-Ffi" firstAttribute="top" secondItem="3t2-1P-y6w" secondAttribute="bottom" id="Hdo-fg-t7J"/>
+                            <constraint firstAttribute="trailing" secondItem="NLS-VC-PmT" secondAttribute="trailing" id="IcU-dg-PEv"/>
+                            <constraint firstItem="NLS-VC-PmT" firstAttribute="leading" secondItem="7kV-VE-aAR" secondAttribute="leading" id="Klg-Yv-yv3"/>
+                            <constraint firstItem="Eyh-SC-Ffi" firstAttribute="top" secondItem="NLS-VC-PmT" secondAttribute="bottom" id="OyC-jj-LHu"/>
+                            <constraint firstItem="NLS-VC-PmT" firstAttribute="top" secondItem="AgS-Qx-FR2" secondAttribute="bottom" id="sp8-Kf-Xmh"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <navigationItem key="navigationItem" title="Filters" id="pfH-aT-yqe"/>
+                    <connections>
+                        <outlet property="collectionView" destination="Iyk-yU-Wlt" id="ElL-WH-XNQ"/>
+                        <outlet property="videoPlayer" destination="NLS-VC-PmT" id="it2-v6-GCd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uSw-se-Z2d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1493" y="858"/>
         </scene>
     </scenes>
 </document>

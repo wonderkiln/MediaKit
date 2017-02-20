@@ -14,10 +14,12 @@
 		3A01E4A41E46453C00D1BD8F /* MKResizeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E49C1E46453B00D1BD8F /* MKResizeControl.swift */; };
 		3A01E4A51E46453C00D1BD8F /* UIImage+Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01E49D1E46453B00D1BD8F /* UIImage+Crop.swift */; };
 		3A01E4A71E4647BC00D1BD8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A01E4A61E4647BC00D1BD8F /* Assets.xcassets */; };
+		3A21021E1E57AB9500774C71 /* VideoFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A21021D1E57AB9500774C71 /* VideoFiltersViewController.swift */; };
 		3A2A1B1B1E4DDABB007660AC /* MKFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A1B1A1E4DDABB007660AC /* MKFilter.swift */; };
 		3A2A1B1D1E4DDAD1007660AC /* MKFilteredImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A1B1C1E4DDAD1007660AC /* MKFilteredImageView.swift */; };
 		3A2A1B1F1E4DDAF9007660AC /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2A1B1E1E4DDAF9007660AC /* UIImage+Resize.swift */; };
 		3A3E30531E52EB470058FC37 /* MKLibraryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3E30521E52EB470058FC37 /* MKLibraryUtils.swift */; };
+		3A490CE71E5AEEDF009EB17B /* MKFilteredVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A490CE61E5AEEDF009EB17B /* MKFilteredVideoPlayer.swift */; };
 		3A7B5EE51E45F50A005D439E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5EE41E45F50A005D439E /* AppDelegate.swift */; };
 		3A7B5EEC1E45F50A005D439E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B5EEB1E45F50A005D439E /* Assets.xcassets */; };
 		3A7B5EEF1E45F50A005D439E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B5EED1E45F50A005D439E /* LaunchScreen.storyboard */; };
@@ -25,6 +27,7 @@
 		3A7B5F231E45F602005D439E /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5F201E45F602005D439E /* FiltersViewController.swift */; };
 		3A7B5F271E45F613005D439E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B5F251E45F613005D439E /* Main.storyboard */; };
 		3AA615C51E461C990031394B /* MediaKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3AA615C41E461C990031394B /* MediaKit.podspec */; };
+		3AF841E11E587B66002A990F /* Video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3AF841E01E587B59002A990F /* Video.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,10 +39,12 @@
 		3A01E49D1E46453B00D1BD8F /* UIImage+Crop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Crop.swift"; sourceTree = "<group>"; };
 		3A01E4A61E4647BC00D1BD8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A03D1301E4C61E500595348 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3A21021D1E57AB9500774C71 /* VideoFiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFiltersViewController.swift; sourceTree = "<group>"; };
 		3A2A1B1A1E4DDABB007660AC /* MKFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKFilter.swift; sourceTree = "<group>"; };
 		3A2A1B1C1E4DDAD1007660AC /* MKFilteredImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKFilteredImageView.swift; sourceTree = "<group>"; };
 		3A2A1B1E1E4DDAF9007660AC /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		3A3E30521E52EB470058FC37 /* MKLibraryUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKLibraryUtils.swift; sourceTree = "<group>"; };
+		3A490CE61E5AEEDF009EB17B /* MKFilteredVideoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKFilteredVideoPlayer.swift; sourceTree = "<group>"; };
 		3A7B5EE11E45F50A005D439E /* MediaKit Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MediaKit Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A7B5EE41E45F50A005D439E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A7B5EEB1E45F50A005D439E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +54,7 @@
 		3A7B5F201E45F602005D439E /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		3A7B5F261E45F613005D439E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3AA615C41E461C990031394B /* MediaKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MediaKit.podspec; path = ../MediaKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		3AF841E01E587B59002A990F /* Video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Video.mp4; sourceTree = "<group>"; };
 		C7D0779DAC13C4F18D6CFFFA /* Pods-MediaKit Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediaKit Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MediaKit Example/Pods-MediaKit Example.release.xcconfig"; sourceTree = "<group>"; };
 		D887E35774EE99AE00DFF65D /* Pods_MediaKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediaKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -100,6 +106,7 @@
 				3A7B5F251E45F613005D439E /* Main.storyboard */,
 				3A7B5F201E45F602005D439E /* FiltersViewController.swift */,
 				3A7B5F1F1E45F602005D439E /* CropViewController.swift */,
+				3A21021D1E57AB9500774C71 /* VideoFiltersViewController.swift */,
 				3A7B5F281E45F62A005D439E /* Supporting Files */,
 			);
 			path = "MediaKit Example";
@@ -114,6 +121,7 @@
 				3A01E49C1E46453B00D1BD8F /* MKResizeControl.swift */,
 				3A01E4971E46453B00D1BD8F /* MKCropView.swift */,
 				3A2A1B1C1E4DDAD1007660AC /* MKFilteredImageView.swift */,
+				3A490CE61E5AEEDF009EB17B /* MKFilteredVideoPlayer.swift */,
 				3A2A1B1A1E4DDABB007660AC /* MKFilter.swift */,
 				3A2A1B201E4DDB00007660AC /* Helpers */,
 				3A01E4A61E4647BC00D1BD8F /* Assets.xcassets */,
@@ -126,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				3A7B5EED1E45F50A005D439E /* LaunchScreen.storyboard */,
+				3AF841E01E587B59002A990F /* Video.mp4 */,
 				3A7B5EEB1E45F50A005D439E /* Assets.xcassets */,
 				3A7B5EE41E45F50A005D439E /* AppDelegate.swift */,
 				3A7B5EF01E45F50A005D439E /* Info.plist */,
@@ -219,6 +228,7 @@
 				3A7B5EEF1E45F50A005D439E /* LaunchScreen.storyboard in Resources */,
 				3A01E4A71E4647BC00D1BD8F /* Assets.xcassets in Resources */,
 				3A7B5EEC1E45F50A005D439E /* Assets.xcassets in Resources */,
+				3AF841E11E587B66002A990F /* Video.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +294,9 @@
 				3A2A1B1F1E4DDAF9007660AC /* UIImage+Resize.swift in Sources */,
 				3A01E4A51E46453C00D1BD8F /* UIImage+Crop.swift in Sources */,
 				3A7B5F231E45F602005D439E /* FiltersViewController.swift in Sources */,
+				3A490CE71E5AEEDF009EB17B /* MKFilteredVideoPlayer.swift in Sources */,
 				3A7B5F221E45F602005D439E /* CropViewController.swift in Sources */,
+				3A21021E1E57AB9500774C71 /* VideoFiltersViewController.swift in Sources */,
 				3A7B5EE51E45F50A005D439E /* AppDelegate.swift in Sources */,
 				3A3E30531E52EB470058FC37 /* MKLibraryUtils.swift in Sources */,
 				3A01E4A01E46453B00D1BD8F /* MKCropViewController.swift in Sources */,
