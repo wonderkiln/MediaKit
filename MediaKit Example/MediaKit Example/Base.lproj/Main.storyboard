@@ -412,7 +412,13 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <navigationItem key="navigationItem" title="Filters" id="pfH-aT-yqe"/>
+                    <navigationItem key="navigationItem" title="Filters" id="pfH-aT-yqe">
+                        <barButtonItem key="rightBarButtonItem" title="Export" id="xiX-Mz-4oH">
+                            <connections>
+                                <action selector="didTapExportButton:" destination="JVN-6z-Pjj" id="APg-gu-IVx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Iyk-yU-Wlt" id="ElL-WH-XNQ"/>
                         <outlet property="videoPlayer" destination="NLS-VC-PmT" id="it2-v6-GCd"/>

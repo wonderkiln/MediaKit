@@ -12,6 +12,18 @@ import AVFoundation
 
 public class MKFilteredVideoPlayer: UIView {
     
+    public enum ExportQuality {
+        case low, medium, high
+        
+        var value: String {
+            switch self {
+            case .low    : return AVAssetExportPresetLowQuality
+            case .medium : return AVAssetExportPresetMediumQuality
+            case .high   : return AVAssetExportPresetHighestQuality
+            }
+        }
+    }
+    
     public var asset: AVAsset? {
         didSet {
             setup()
@@ -37,6 +49,26 @@ public class MKFilteredVideoPlayer: UIView {
     public func play(loop: Bool) {
         self.loop = loop
         player?.play()
+    }
+    
+    public func export(to url: URL, quality: ExportQuality = .high, completion: @escaping () -> Void) {
+        guard let asset = asset else {
+            return
+        }
+        
+        guard let session = AVAssetExportSession(asset: asset, presetName: quality.value) else {
+            return
+        }
+        
+        session.videoComposition = AVVideoComposition(asset: asset, applyingCIFiltersWithHandler: processFrame)
+        session.outputFileType = AVFileTypeMPEG4
+        session.outputURL = url
+        
+        session.exportAsynchronously {
+            if session.status == .completed {
+                completion()
+            }
+        }
     }
     
     deinit {

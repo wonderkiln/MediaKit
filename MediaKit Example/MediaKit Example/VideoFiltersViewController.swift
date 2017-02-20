@@ -90,6 +90,14 @@ class VideoFiltersViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func didTapExportButton(_ button: UIBarButtonItem) {
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent("temp.mp4")
+        try? FileManager.default.removeItem(at: url)
+        videoPlayer.export(to: url, quality: .medium) {
+            print("Done: \(url)")
+        }
+    }
 }
 
 extension VideoFiltersViewController: UICollectionViewDataSource, UICollectionViewDelegate {
