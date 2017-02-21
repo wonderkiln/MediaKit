@@ -94,9 +94,11 @@ class VideoFiltersViewController: UIViewController {
     @IBAction func didTapExportButton(_ button: UIBarButtonItem) {
         let url = FileManager.default.temporaryDirectory.appendingPathComponent("temp.mp4")
         try? FileManager.default.removeItem(at: url)
-        videoPlayer.export(to: url, quality: .medium) {
+        videoPlayer.export(to: url, quality: .medium, progress: { progress in
+            print("Exporting... \(Int(progress * 100))%")
+        }, completion: {
             print("Done: \(url)")
-        }
+        })
     }
 }
 

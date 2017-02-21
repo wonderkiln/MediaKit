@@ -10,19 +10,19 @@ import UIKit
 import MobileCoreServices
 import AVFoundation
 
-public class MKFilteredVideoPlayer: UIView {
+public enum ExportQuality {
+    case low, medium, high
     
-    public enum ExportQuality {
-        case low, medium, high
-        
-        var value: String {
-            switch self {
-            case .low    : return AVAssetExportPresetLowQuality
-            case .medium : return AVAssetExportPresetMediumQuality
-            case .high   : return AVAssetExportPresetHighestQuality
-            }
+    var value: String {
+        switch self {
+        case .low    : return AVAssetExportPresetLowQuality
+        case .medium : return AVAssetExportPresetMediumQuality
+        case .high   : return AVAssetExportPresetHighestQuality
         }
     }
+}
+
+public class MKFilteredVideoPlayer: UIView {
     
     public var asset: AVAsset? {
         didSet {
@@ -51,7 +51,20 @@ public class MKFilteredVideoPlayer: UIView {
         player?.play()
     }
     
-    public func export(to url: URL, quality: ExportQuality = .high, completion: @escaping () -> Void) {
+    public typealias ProgressBlock = (Double) -> Void
+    public typealias CompletionBlock = () -> Void
+    
+    private var progressBlock: ProgressBlock?
+    private var progressTimer: Timer?
+    
+    @objc private func progressTimerDidTick(_ timer: Timer) {
+        guard let session = timer.userInfo as? AVAssetExportSession else {
+            return
+        }
+        progressBlock?(Double(session.progress))
+    }
+    
+    public func export(to url: URL, quality: ExportQuality = .high, progress: ProgressBlock? = nil, completion: @escaping CompletionBlock) {
         guard let asset = asset else {
             return
         }
@@ -64,7 +77,20 @@ public class MKFilteredVideoPlayer: UIView {
         session.outputFileType = AVFileTypeMPEG4
         session.outputURL = url
         
+        if let progress = progress {
+            progressBlock = progress
+            progressTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(progressTimerDidTick(_:)), userInfo: session, repeats: true)
+        }
+        
         session.exportAsynchronously {
+            switch session.status {
+            case .cancelled, .completed, .failed:
+                self.progressTimer?.invalidate()
+                self.progressTimer = nil
+                self.progressBlock = nil
+            default:
+                break
+            }
             if session.status == .completed {
                 completion()
             }
