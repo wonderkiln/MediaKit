@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MobileCoreServices
 import AVFoundation
 
 public enum ExportQuality {
@@ -92,7 +91,9 @@ public class MKFilteredVideoPlayer: UIView {
                 break
             }
             if session.status == .completed {
-                completion()
+                DispatchQueue.main.async {
+                    completion()
+                }
             }
         }
     }
