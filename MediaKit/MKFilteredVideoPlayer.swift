@@ -25,7 +25,52 @@ public class MKFilteredVideoPlayer: UIView {
     
     public var asset: AVAsset? {
         didSet {
+            updateTimeObserver()
             setup()
+        }
+    }
+    
+    private var timeObserverToken: Any?
+    
+    public var startTime: Double? {
+        didSet {
+            if oldValue != startTime {
+                if let startTime = startTime {
+                    let time = CMTime(seconds: startTime, preferredTimescale: 1000)
+                    self.player?.seek(to: time, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+                }
+            }
+        }
+    }
+    public var endTime: Double? {
+        didSet {
+            if oldValue != endTime {
+                if let endTime = endTime {
+                    let time = CMTime(seconds: endTime, preferredTimescale: 1000)
+                    self.player?.seek(to: time, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+                }
+                updateTimeObserver()
+            }
+        }
+    }
+    
+    private func updateTimeObserver() {
+        if let token = timeObserverToken {
+            player?.removeTimeObserver(token)
+            timeObserverToken = nil
+        }
+        if let endTime = endTime ?? asset?.duration.seconds {
+            let time = CMTime(seconds: endTime, preferredTimescale: 1000)
+            timeObserverToken = player?.addBoundaryTimeObserver(forTimes: [NSValue(time: time)], queue: .main, using: {
+                if self.loop {
+                    let startTime = self.startTime ?? 0.0
+                    let time = CMTime(seconds: startTime, preferredTimescale: 1000)
+                    self.player?.seek(to: time, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+                    self.player?.play()
+                } else {
+                    self.player?.pause()
+                }
+            })
         }
     }
     
@@ -34,11 +79,8 @@ public class MKFilteredVideoPlayer: UIView {
     
     public var loop: Bool = false {
         didSet {
-            if loop {
-                player?.actionAtItemEnd = .none
-                NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidPlayToEndTime), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
-            } else {
-                NotificationCenter.default.removeObserver(self)
+            if oldValue != loop {
+                updateTimeObserver()
             }
         }
     }
@@ -47,7 +89,13 @@ public class MKFilteredVideoPlayer: UIView {
     
     public func play(loop: Bool) {
         self.loop = loop
+        let time = CMTime.init(seconds: startTime ?? 0, preferredTimescale: 1000)
+        player?.seek(to: time, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
         player?.play()
+    }
+    
+    public func pause() {
+        player?.pause()
     }
     
     public typealias ProgressBlock = (Double) -> Void
@@ -70,6 +118,12 @@ public class MKFilteredVideoPlayer: UIView {
         
         guard let session = AVAssetExportSession(asset: asset, presetName: quality.value) else {
             return
+        }
+        
+        if let start = startTime, let end = endTime {
+            let start = CMTime(seconds: start, preferredTimescale: 1000)
+            let end = CMTime(seconds: end, preferredTimescale: 1000)
+            session.timeRange = CMTimeRange(start: start, end: end)
         }
         
         session.videoComposition = AVVideoComposition(asset: asset, applyingCIFiltersWithHandler: processFrame)
@@ -103,12 +157,6 @@ public class MKFilteredVideoPlayer: UIView {
     }
     
     private func setup() {
-        layer.sublayers?.forEach {
-            if $0 is AVPlayerLayer {
-                $0.removeFromSuperlayer()
-            }
-        }
-        
         guard let asset = asset else {
             return
         }
@@ -116,14 +164,18 @@ public class MKFilteredVideoPlayer: UIView {
         let item = AVPlayerItem(asset: asset)
         item.videoComposition = AVVideoComposition(asset: asset, applyingCIFiltersWithHandler: processFrame)
         
-        let player = AVPlayer(playerItem: item)
-        
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = bounds
-        layer.addSublayer(playerLayer)
-        
-        self.player = player
-        self.playerLayer = playerLayer
+        if self.player == nil {
+            let player = AVPlayer(playerItem: item)
+            
+            let playerLayer = AVPlayerLayer(player: player)
+            playerLayer.frame = bounds
+            layer.addSublayer(playerLayer)
+            
+            self.player = player
+            self.playerLayer = playerLayer
+        } else {
+            self.player?.replaceCurrentItem(with: item)
+        }
     }
     
     private func processFrame(_ request: AVAsynchronousCIImageFilteringRequest) {
@@ -136,11 +188,6 @@ public class MKFilteredVideoPlayer: UIView {
         filter.setValue(source, forKey: kCIInputImageKey)
         let output = filter.outputImage!.cropping(to: request.sourceImage.extent)
         request.finish(with: output, context: nil)
-    }
-    
-    @objc private func playerItemDidPlayToEndTime() {
-        player?.seek(to: CMTime.init(seconds: 0, preferredTimescale: 1000))
-        player?.play()
     }
     
     public override func layoutSubviews() {
