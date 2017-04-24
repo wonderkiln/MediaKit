@@ -230,7 +230,7 @@ open class MKCropView: UIView, UIScrollViewDelegate, UIGestureRecognizerDelegate
     open func setRotationAngle(_ rotationAngle: CGFloat, snap: Bool) {
         var rotation = rotationAngle
         if snap {
-            rotation = nearbyint(rotationAngle / CGFloat(M_PI_2)) * CGFloat(M_PI_2)
+            rotation = nearbyint(rotationAngle / CGFloat(Double.pi / 2)) * CGFloat(Double.pi / 2)
         }
         self.rotationAngle = rotation
     }
